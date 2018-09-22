@@ -1,0 +1,72 @@
+@baseColor: #1e1e1e;
+@secondaryColor: #252526;
+@tertiaryColor: #333337;
+@warningColor: #424245;
+@warning2Color: #007acc;
+@controlColor: rgba(0, 0, 0, 0.0);
+@hoverColor: #68217a;
+@hoverBg2Color: #3e3e42;
+@hoverBgColor: #3e3e40;
+@contrastColor: #686868;
+@borderColor: #3f3f46;
+@selectedColor: #264f78;
+@disabledSelectedColor: desaturate(mix(@baseColor, @selectedColor, 25%), 50%);
+@headerColor: #333337;
+@highlightColor: #1c97ea;
+@highlightBgColor: @highlightColor;
+@darkBgColor: #1b1b1c;
+@invertedColor: #dcdcdc;
+@invertedSecondaryColor: white;
+@titleBarTextColor: #999999;
+@textColor: #dcdcdc;
+
+@fontLineSize: @units1_1;
+
+@font-face { font-family: Consolas; src: local('Consolas')}
+@font-face { font-family: Consolas; src: local('Consolas'); font-weight: bold; }
+@font-face { font-family: NotoSans; src: url("/skin/fonts/NotoSans-Regular.ttf"); }
+@font-face { font-family: NotoSans; src: url("/skin/fonts/NotoSans-Bold.ttf"); font-weight: bold; }
+
+// colors used for selection icons
+@selectedBgColor: @tertiaryColor;
+@selectedBgColorR: fade(@selectedBgColor, 85%); // for rows
+@selectedHoverColor: mix(@selectedBgColor, @hoverColor);
+
+body {
+    font-family: Consolas, sans-serif;
+}
+
+.sidePanel {
+    background-color: @secondaryColor;
+}
+
+.verticalPanel {
+	.sidePanel;
+}
+
+.verticalPanel .transparentBackground {
+    background-color: fadeout(@secondaryColor, @transparentFadeout);
+}
+
+.verticalPanelNarrow {
+	.sidePanel;
+}
+
+[data-id=toolbuttons] {
+    background-color: @tertiaryColor;
+}
+
+[data-control-class=MainTabs] {
+    //background-color: @highlightColor;
+	//color: @invertedColor;
+	//fill: @invertedColor;
+}
+
+[data-control-class=MainTabs] .tabsHeader[data-selected] {
+    background-color: @warning2Color;
+    color: @invertedColor;
+	fill: @invertedColor;
+    border-bottom: none;
+    font-weight: bold;
+//    border-bottom: 1px solid@highlightColor;
+}

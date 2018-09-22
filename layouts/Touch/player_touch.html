@@ -1,0 +1,46 @@
+<!-- Player -->
+<div data-id="player" class="flex row" data-control-class="Player" data-init-params="{closable: true, closeAction: actions.view.player}">
+    <div data-id="playerLeftButtons" class="playerButtons flex row static verticalCenter">
+        <div data-id="player-prev" class="playerButton playerSmallButton" data-icon="player_prev" data-player-control="previous">
+        </div>
+        <div data-id="player-play" class="playerButton playerSmallButton" data-icon="player_play" data-player-control="play">
+        </div>
+        <div data-id="player-pause" class="playerButton playerSmallButton" data-icon="player_pause" data-player-control="pause">
+        </div>
+        <div data-id="player-next" class="playerButton playerSmallButton" data-icon="player_next" data-player-control="next">
+        </div>
+    </div>
+    <div data-id="playerMiddle" class="dynamic verticalCenter">
+        <table data-id="playerTable">
+            <tr>
+                <td colspan="3" align="center">
+                    <label data-id="player-title" class="textCenter" data-player-control="titleArtist"></label>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <div data-id="player-seekbar" class="stretchWidth" data-control-class="Slider" data-init-params="{orientation: 'horizontal', invert: false, min: 0, max: 0}" data-player-control="seek"></div>
+                </td>
+            </tr>
+            <tr>
+                <td data-id="td_player-ltime">
+                    <label id="player-ltime" class="smallText" data-player-control="time">00:00:00</label>
+                </td>
+                <td align="center">
+                    <div data-id="player-rating" data-control-class="Rating" data-init-params="{starWidth: '1.72em', starMargin: '0.15em'}" data-player-control="rating"></div>
+                </td>
+                <td data-id="td_player-rtime">
+                    <label data-id="player-rtime" class="smallText" data-player-control="remainingTime">-00:00:00</label>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div data-id="playerRightButtons" class="flex row static verticalCenter">
+        <div data-id="player-albumArt" class="playerSmallButton imageSquare border" data-player-control="albumArt">
+            <div data-id="player-noaa" data-icon="unknownAA" class="allinside autosize box autoMargin" ></div>
+            <img data-id="player-artworkImg" class="allinside autosize box autoMargin" ></img>
+        </div>
+        <div data-id="player-np" class="playerButton playerSmallButton" data-icon="song" data-player-control="nowplaying" ></div>
+        <div title="Volume bar" data-control-class="Slider" data-init-params="{min: 0, max:100, tickPlacement: 'topLeft', tickInterval: 50}" data-id="player-volumebar" data-player-control="volume" ></div>
+    </div>
+</div>

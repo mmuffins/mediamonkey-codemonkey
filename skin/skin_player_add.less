@@ -1,0 +1,80 @@
+[data-id='player-volumebar'] {    
+    height: @units0_8;
+    width: @units4_0;
+}
+
+.playerSmallButton {
+    width: @units2_0;
+    height: @units2_0;
+    padding: @units0_5;
+}
+
+.playerMediumButton {
+    width: @units2_5;
+    height: @units2_5;
+    padding: @units0_5;
+}
+
+.playerBigButton {
+    width: @units3_5;
+    height: @units3_5;
+    padding: @units0_2;
+}
+
+[data-id='td_player-ltime'] {
+    padding-top: 0;
+    padding-left: 0;
+}
+
+[data-id='player-vis'] {
+    position: relative;
+    opacity: 1;
+    height: @units2_0;
+}
+
+[data-id='player'], [data-id='player'] .ratingStar {
+	background-color: @darkBgColor;
+	color: @invertedColor;
+	fill: @invertedColor;
+}
+
+[data-id='player'] .seekBar {
+    background-color: @invertedSecondaryColor;
+}
+
+[data-id='player'] .seekBarBefore {
+    background-color: @invertedColor;
+}
+
+[data-id='player'] .seekBarThumb {
+    border: @thumbBorderSize solid @invertedSecondaryColor;
+}
+
+[data-id='player'] .seekBarThumb:hover, [data-id='player'] .seekBarThumb:active, [data-id='player'] .seekBarThumbVert:hover,[data-id='player'] .seekBarThumbVert:active {
+    border: @thumbBorderSize solid @invertedColor;
+}
+
+[data-id='player'] .ratingCanvas[data-hover] .ratingStar {
+    fill: @invertedSecondaryColor;
+}
+
+[data-id='player'] .ticksOuter .tick {
+    background-color: @invertedSecondaryColor;
+}
+
+
+.playerButton {
+    &:hover:not([data-disabled]), &:hover:not([data-disabled]) label, &:hover .ratingStar {
+        color: @invertedSecondaryColor;
+        fill: @invertedSecondaryColor;
+        background-color: inherit;
+    }
+}
+
+[data-id='player'] .progressBar .label {
+    color: @invertedColor;
+}
+
+.videoContainer {
+    border: 4px solid black;
+}

@@ -1,0 +1,110 @@
+// !important is used to override skin settings of the player components
+
+
+[data-id='player'] {
+    min-width: round(@fontSize*43.0);
+    height: auto;
+}
+[data-id='playerMiddle'] {
+    overflow: hidden;
+    padding: @units0_25;
+    padding-right: round(@fontSize*0.43);
+    min-width: round(@fontSize*15.7);
+}
+
+[data-id='playerRightButtons'] {
+    padding: @units0_25;
+    width: round(@fontSize*4.3) * 3;
+}
+[data-id='player-volumebar'] {
+    position: absolute;
+    top: 40%;
+    right: 30px;
+    height: 14px;
+    width: 60px;
+}
+
+[data-id='td_player-ltime'] {
+    width:@units4_0;
+    white-space: nowrap;
+    position: relative;
+    padding-left: round(@fontSize/2);
+}
+[data-id='player-rating'] {
+    width: auto;
+    padding-top: round(@fontSize*0.143);
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+[data-id='td_player-rtime'] {
+    text-align: right;
+    width:@units4_0;
+    white-space: nowrap;
+    position: relative;
+}
+
+.playerButtons {
+    padding: round(@fontSize*0.286);
+}
+.playerButton {
+    .toolbuttonbase;
+    position: inherit;
+}
+.playerBigButton {
+    width: round(@fontSize*4.3);
+    height: round(@fontSize*4.3);
+}
+.playerSmallButton {
+    width: round(@fontSize*3.86);
+    height: round(@fontSize*3.86);
+}
+[data-id='player-vis'] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0.3;
+}
+[data-id='player-vis'] canvas {
+    position: absolute;
+    z-index: 0;
+}
+[data-id='player-albumArt'] {
+    
+}
+[data-id='player-prev'] {
+    top: 0px;
+    left: 0px;
+}
+[data-id='player-play'] {
+    top: 0px;
+    left: 0px;
+}
+[data-id='player-pause'] {
+    top: 0px;
+    left: 0px;
+}
+[data-id='player-next'] {
+    top: 0px;
+    left: 0px;
+}
+[data-id='player-np'] {
+    top: 0px;
+    left: 10px;
+}
+[data-id='player-ltime'] {
+    left: 269px;
+}
+
+[data-id='player-seekbar'] {
+    top: 25px;
+    left: 0px;
+}
+
+[data-id='player-rtime'] {
+    position: inherit;
+    top: auto;
+    right: 0px;
+}

@@ -1,0 +1,19 @@
+.toolbuttonbase {
+    &:hover:not([data-disabled]), &:hover:not([data-disabled]) label, &:hover .ratingStar {
+        color: inherit;
+        fill: inherit;
+        -webkit-filter: inherit;
+        background-color: @hoverBgColor;
+    }
+    &:hover:not([data-disabled]) label[data-popuplabel] {
+        box-shadow: inherit;
+    }
+}
+.button[data-default] {    
+    color: @highlightColor;
+    box-shadow: none;
+}
+
+.button[data-default]:not([data-disabled]) {    
+    box-shadow: none;
+}

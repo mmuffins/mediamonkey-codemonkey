@@ -1,0 +1,29 @@
+@mixColor: lighten(@highlightBgColor, 30%);
+@mixPercent: 75%;
+
+.dropdownitem[data-focused], .dropdownitem[data-selected] {
+    color: @invertedColor;
+    fill: @invertedColor;
+}
+
+.dropdownitem.lvItem:not([data-selected]) {
+    background-color: mix(@controlColor, @mixColor, @mixPercent);
+	
+    &[data-hover]:not([data-disabled]) {
+		background-color: mix(@hoverBgColor, @mixColor, @mixPercent);
+	}
+}
+
+.dropdownitem.lvItem[data-even]:not([data-selected]) {
+	background-color: mix(@secondaryColor, @mixColor, @mixPercent);
+
+	&[data-hover]:not([data-disabled]) {
+		background-color: mix(@hoverBg2Color, @mixColor, @mixPercent);
+	}
+}
+
+.searchBox .es-edit,
+.searchBox .es-select {
+    color: @baseColor;
+    fill: @baseColor;    
+}

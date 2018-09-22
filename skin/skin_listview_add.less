@@ -1,0 +1,78 @@
+/* Alternate colors for tracklists */
+[data-control-class="ColumnTrackList"] .lvItem[data-even]:not([data-selected]),
+[data-control-class="GroupedTrackList"] .lvItem[data-even]:not([data-selected]),
+[data-control-class="SimpleTracklist"] .lvItem[data-even]:not([data-selected]) {
+	background-color: @secondaryColor;
+
+	.transparentBackground &[data-hover], &[data-hover] {
+		background-color: @hoverBg2Color;
+	}
+    
+    .transparentBackground & {
+        background-color: transparent;
+    }
+}
+
+/* Selected listview item */
+.lvItem[data-selected], div:focus .lvItem[data-selected] {
+    color: @invertedColor;
+    fill: @invertedColor;
+
+    &[data-hover] {
+		background-color: @warning2Color;
+	}
+    
+	.clickable:hover {
+		color: @hoverBg2Color;
+	}
+    
+    & .showWhenItemSelected {
+        fill: @textColor;
+    }
+}
+
+.lvItem.itemNowPlaying[data-selected], .lvItem.itemNowPlaying[data-selected] label, .lvItem[data-selected] .ratingStar, 
+.lvItem[data-selected] .itemNowPlaying, .lvItem[data-selected] .itemNowPlaying label {
+    color: @invertedColor;
+    fill: @invertedColor;
+}
+
+.lvItem[data-selected] .ratingCanvas[data-hover] .ratingStar, .lvItem.itemNowPlaying[data-selected] .ratingStar, .lvItem[data-selected] .itemNowPlaying .ratingStar {
+    fill: mix(@invertedColor, @warningColor, 90%);
+}
+
+.lvItem[data-selected] {
+	fill: @textColor; /* A temporary tweak, should be better designed once the hover button stabilize */
+}
+
+/* Main tree has slightly different selection - less prominent */
+[data-control-class=MediaTree] .lvItem[data-selected] {
+    color: @highlightColor;
+    fill: @highlightColor;
+    background-color: inherit;
+
+    &[data-hover] {
+		background-color: @hoverBgColor;
+	}
+}
+
+.lvHeaderItem {
+	border: 0px none;
+    border-left: @borderWidth @borderStyle @borderColor;
+}
+.lvHeader:hover > .lvHeaderItems.resizeable > .lvHeaderItem {
+    border-left: @borderWidth @borderStyle @secondaryColor;
+    border-right: @borderWidth @borderStyle @secondaryColor;
+    padding-right: @units0_15 - @borderWidth;
+}
+.lvHeader:hover > .lvHeaderItems.resizeable > .lvHeaderFillRest {
+    border-left: @borderWidth @borderStyle @secondaryColor;
+}
+.lvColumnItem {
+    border: 0px none;
+    border-left: @borderWidth solid transparent;
+}
+
+.icnExpand {
+    opacity: 0.25;
+}

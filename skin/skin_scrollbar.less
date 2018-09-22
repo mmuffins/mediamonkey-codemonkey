@@ -1,0 +1,27 @@
+@scrollbarSize: @units0_8;
+
+::-webkit-scrollbar {
+    width: @scrollbarSize;
+    height: @scrollbarSize;
+    background: @tertiaryColor;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: @contrastColor;
+}
+
+::-webkit-scrollbar-corner {
+	background: transparent;
+}
+
+body
+{  /* This is scrollbar fallback for IE and other non-WebKit browsers, where support for skinned scrollbars is limited*/
+   scrollbar-face-color: @hoverBgColor;
+   scrollbar-arrow-color: @textColor;
+   scrollbar-track-color: @controlColor;
+   scrollbar-shadow-color: @hoverBgColor;
+   scrollbar-highlight-color: @hoverBgColor;
+   scrollbar-3dlight-color: @hoverBgColor;
+   scrollbar-darkshadow-color: @hoverBgColor;
+}
