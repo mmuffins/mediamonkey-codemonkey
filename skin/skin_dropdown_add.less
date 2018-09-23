@@ -14,10 +14,12 @@
     background-color: @warning2Color;
 }
 
-// .editable-select[data-focused]  {
-// .editable-select[data-focused] > .es-select {
-//     border: 1px solid @warning2Color;
-// }
+.editable-select[data-focused] > .es-select {
+    fill: @textColor;
+    background-color: @warning2Color;
+    border: 1px solid @warning2Color;
+    border-left-width: 0px;
+}
 
 .dropdownitem[data-focused], .dropdownitem[data-selected] {
     color:white;
@@ -45,15 +47,15 @@
     border: 1px solid @borderColor;
     border-left-width: 0px;
     fill: #999999;
-    &:hover:not([data-disabled]) {
-        fill: @warning2Color;
-        background-color: @darkBgColor;
-        border: 1px solid @warning2Color;
-        border-left-width: 0px;
-    }
-    &:active:not([data-disabled]) {
-        fill: @textColor;
-        background-color: @warning2Color;
-        border-left-width: 0px;
-    }
+    // &:hover:not([data-disabled]) {
+    //     fill: @warning2Color;
+    //     background-color: @darkBgColor;
+    //     border: 1px solid @warning2Color;
+    //     border-left-width: 0px;
+    // }
+    // &:active:not([data-disabled]) {
+    //     fill: @textColor;
+    //     background-color: @warning2Color;
+    //     border-left-width: 0px;
+    // }
 }

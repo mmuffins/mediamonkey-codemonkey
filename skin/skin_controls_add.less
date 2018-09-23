@@ -10,3 +10,24 @@
 .scoreBar {
     background-color: @selectedHoverColor;
 }
+
+
+input:active {
+    background-color: @buttonBgColor;
+}
+
+input:focus {
+	.grindEdge;
+    background-color: @buttonBgColor;
+    border: 1px solid @warning2Color;
+    color:white;
+}
+
+input:hover {
+    border: 1px solid @warning2Color;
+}
+
+.input:hover > .es-select {
+    fill: @textColor;
+    background-color: @warning2Color;
+}
