@@ -39,42 +39,54 @@
 }
 
 [data-id='player'] .seekBar {
-    background-color: @invertedSecondaryColor;
+    background-color: @textColor;
 }
 
 [data-id='player'] .seekBarBefore {
-    background-color: @invertedColor;
+    background-color: @warning2Color;
 }
 
 [data-id='player'] .seekBarThumb {
-    border: @thumbBorderSize solid @invertedSecondaryColor;
+    border: @thumbBorderSize solid @textColor;
 }
 
 [data-id='player'] .seekBarThumb:hover, [data-id='player'] .seekBarThumb:active, [data-id='player'] .seekBarThumbVert:hover,[data-id='player'] .seekBarThumbVert:active {
-    border: @thumbBorderSize solid @invertedColor;
+    border: @thumbBorderSize solid @warning2Color;
 }
 
 [data-id='player'] .ratingCanvas[data-hover] .ratingStar {
-    fill: @invertedSecondaryColor;
+    fill: @warning2Color;
 }
 
 [data-id='player'] .ticksOuter .tick {
-    background-color: @invertedSecondaryColor;
+    background-color: @warning2Color;
 }
-
 
 .playerButton {
     &:hover:not([data-disabled]), &:hover:not([data-disabled]) label, &:hover .ratingStar {
-        color: @invertedSecondaryColor;
-        fill: @invertedSecondaryColor;
+        color: @warning2Color;
+        fill: @warning2Color;
         background-color: inherit;
+    }
+    &:active:not([data-disabled]), &:hover:not([data-disabled]) label, &:active .ratingStar {
+        border:none;
+        background-color: inherit;
+
     }
 }
 
 [data-id='player'] .progressBar .label {
-    color: @invertedColor;
+    color: @textColor;
 }
 
 .videoContainer {
     border: 4px solid black;
+}
+
+.playerText {
+    font-size: @units1_2;
+}
+
+.playerTimeText {
+    font-size: @units1_0;
 }
