@@ -1,24 +1,35 @@
-@mixColor: lighten(@highlightBgColor, 30%);
-@mixPercent: 75%;
+.editable-select:hover > .es-select {
+    fill: @warning2Color;
+    background-color: @darkBgColor;
+    border: 1px solid @warning2Color;
+}
+
+.editable-select:hover > .es-edit {
+    border: 1px solid @warning2Color;
+}
+
+.editable-select:active > .es-select {
+    fill: @textColor;
+    background-color: @warning2Color;
+}
+
+// .editable-select[data-focused]  {
+// .editable-select[data-focused] > .es-select {
+//     border: 1px solid @warning2Color;
+// }
 
 .dropdownitem[data-focused], .dropdownitem[data-selected] {
-    color: @invertedColor;
-    fill: @invertedColor;
+    color:white;
+    fill: @borderColor;
 }
 
 .dropdownitem.lvItem:not([data-selected]) {
-    background-color: mix(@controlColor, @mixColor, @mixPercent);
+    background-color: @darkBgColor;
+    border-color: none;
+    color: white;
 	
     &[data-hover]:not([data-disabled]) {
-		background-color: mix(@hoverBgColor, @mixColor, @mixPercent);
-	}
-}
-
-.dropdownitem.lvItem[data-even]:not([data-selected]) {
-	background-color: mix(@secondaryColor, @mixColor, @mixPercent);
-
-	&[data-hover]:not([data-disabled]) {
-		background-color: mix(@hoverBg2Color, @mixColor, @mixPercent);
+		background-color: @buttonBgColor;
 	}
 }
 
@@ -26,4 +37,20 @@
 .searchBox .es-select {
     color: @baseColor;
     fill: @baseColor;    
+}
+
+.es-select, .flex > .es-select {
+    background-color: @tertiaryColor;
+    border: 1px solid @borderColor;
+    border-left-width: 0px;
+    fill: #999999;
+    &:hover:not([data-disabled]) {
+        fill: @warning2Color;
+        background-color: @darkBgColor;
+        border: 1px solid @warning2Color;
+    }
+    &:active:not([data-disabled]) {
+        fill: @textColor;
+        background-color: @warning2Color;
+    }
 }
