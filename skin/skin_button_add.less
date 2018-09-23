@@ -1,5 +1,3 @@
-
-
 .toolbuttonbase {
     &:hover:not([data-disabled]), &:hover:not([data-disabled]) label, &:hover .ratingStar {
         color: inherit;
@@ -26,6 +24,16 @@
     border: 1px solid @buttonBorderColor;
 }
 
+.button[data-disabled] {
+    color: @buttonDisabledTextColor;
+    background-color: @buttonDisabledBgColor;
+    border: 1px solid @buttonDisabledBorderColor;
+}
+
+.button[data-disabled] label {
+	color: @buttonDisabledTextColor;
+}
+
 .buttonPushEffect {
     color: @textColor;
     border: 1px solid @warning2Color;
@@ -33,7 +41,6 @@
     .grindEdge;
     -webkit-transform: none;
 }
-
 
 .button:hover:not([data-disabled]):not([data-no-button]) {
     border: 1px solid @warning2Color;
