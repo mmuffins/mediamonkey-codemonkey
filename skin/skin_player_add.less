@@ -71,12 +71,25 @@
     &:active:not([data-disabled]), &:hover:not([data-disabled]) label, &:active .ratingStar {
         border:none;
         background-color: inherit;
-
     }
+    &:active:not([data-disabled]) {
+        .playerButtonPushEffect;
+    }
+}
+
+.playerButton:active:not([data-disabled]):not([data-no-button]) {
+    .playerButtonPushEffect
 }
 
 [data-id='player'] .progressBar .label {
     color: @textColor;
+}
+
+.playerButtonPushEffect {
+    color: @textColor;
+    transform: scale(1.05);
+    background: none;
+    .grindEdge;
 }
 
 .videoContainer {
