@@ -13,15 +13,18 @@
         </div>
     </div>
 
-    <label data-id="player-ltime" class="playerTimeText verticalCenter vSeparatorTiny" data-player-control="time">00:00:00</label>
+    <label data-id="player-ltime" class="smallText verticalCenter vSeparatorTiny textRight" data-player-control="time" style="min-width: 4em"></label>        
 
     <div class="dynamic fill flex flexcenter column vSeparatorTiny">
         <div data-id="player-seekbar" data-control-class="Slider" style="align-self: stretch; z-index: 1;" data-init-params="{orientation: 'horizontal', invert: false, min: 0, max: 0}" data-player-control="seek"></div>
-        <div data-id="player-title" class="fill textCenter playerText noOverflow" style="position: absolute; top: 10%; max-height: 30%" data-player-control="titleArtist" data-optional="{group: 20, order: 10}"></div>
-        <div data-id="progressContainer" data-hideInFullWindowMode class="content" style="position: absolute; bottom: 8%; left: 0; right: 0"></div>
+        <!-- <div data-id="player-title" class="fill textCenter playerText noOverflow" style="position: absolute; top: 10%; max-height: 30%" data-player-control="titleArtist" data-optional="{group: 20, order: 10}"></div> -->
+        <div class="fill textCenter smallText noOverflow" style="position: absolute; top: 10%; max-height: 30%">
+            <label data-id="player-title" class="textWrap" data-player-control="titleArtist" data-optional="{group: 20, order: 10}"></label>
+        </div>
+    <div data-id="progressContainer" data-hideInFullWindowMode class="content" style="position: absolute; bottom: 8%; left: 0; right: 0"></div>
     </div>
 
-    <label data-id="player-rtime" class="playerTimeText verticalCenter vSeparatorTiny" data-player-control="remainingTime" data-optional="{group: 20, order: 30}">-00:00:00</label>
+    <label data-id="player-rtime" class="smallText verticalCenter vSeparatorTiny" style="min-width: 4.2em" data-player-control="remainingTime" data-optional="{group: 20, order: 30}"></label>
     <div data-id="player-rating" data-control-class="Rating" data-init-params="{starWidth: '1.72em', starMargin: '0.15em'}" data-player-control="rating" data-optional="{group: 20, order: 20, title:'Rating'}"  style="display: none"></div>
     <div data-id="player-vis-cont" class="verticalCenter" style="width:40px" data-optional="{group: 20, order: 40, title: 'Visualizer'}">
         <div data-id="player-vis" data-control-class="Visualizer" data-player-control="visualizer"></div>

@@ -40,18 +40,19 @@
 
 [data-id='player'] .seekBar {
     background-color: @textColor;
+    border-radius: 0.5px;
+    left: @units0_125;
+    right: @units0_125;
 }
 
 [data-id='player'] .seekBarBefore {
     background-color: @warning2Color;
+    margin-left: @units0_125;
+    margin-right: @units0_125;
 }
 
 [data-id='player'] .seekBarThumb {
-    border: @thumbBorderSize solid @textColor;
-}
-
-[data-id='player'] .seekBarThumb:hover, [data-id='player'] .seekBarThumb:active, [data-id='player'] .seekBarThumbVert:hover,[data-id='player'] .seekBarThumbVert:active {
-    border: @thumbBorderSize solid @warning2Color;
+    display: none;
 }
 
 [data-id='player'] .ratingCanvas[data-hover] .ratingStar {
@@ -59,7 +60,7 @@
 }
 
 [data-id='player'] .ticksOuter .tick {
-    background-color: @warning2Color;
+    background-color: @invertedSecondaryColor;
 }
 
 .playerButton {
@@ -85,6 +86,10 @@
     color: @textColor;
 }
 
+[data-id='player-title'] {
+    font-size: @units1_2;
+}
+
 .playerButtonPushEffect {
     color: @textColor;
     transform: scale(1.05);
@@ -94,12 +99,4 @@
 
 .videoContainer {
     border: 4px solid black;
-}
-
-.playerText {
-    font-size: @units1_2;
-}
-
-.playerTimeText {
-    font-size: @units1_0;
 }
