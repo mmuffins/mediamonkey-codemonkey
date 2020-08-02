@@ -42,12 +42,16 @@ jobs:
    #     dest: ${{ env.EXTENSION_FILE_NAME }}
     #    recursive: true
       
-    - name: Zip Files
-      uses: thedoctor0/zip-release@master
+    - uses: montudor/action-zip@v0.1.0
       with:
-        filename: ${{ env.EXTENSION_FILE_NAME }}
-        path: ${{ github.workspace }}
-        exclusions: '*.git*'
+        args: zip -qq -r "${{ env.EXTENSION_FILE_NAME }}" "${{ github.workspace }}"
+      
+    #- name: Zip Files
+    #  uses: thedoctor0/zip-release@master
+    #  with:
+    #    filename: ${{ env.EXTENSION_FILE_NAME }}
+    #    path: ${{ github.workspace }}
+    #    exclusions: '*.git*'
 
     - name: Upload artifact
       uses: actions/upload-artifact@v2
