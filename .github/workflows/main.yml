@@ -25,5 +25,5 @@ jobs:
       shell: pwsh
       run: |
         Get-ChildItem "$GITHUB_WORKSPACE\" -recurse
-        Get-ChildItem "$GITHUB_WORKSPACE\images\" -Exclude thumb.png | Remove-Item
+        Get-ChildItem "$GITHUB_WORKSPACE\images\" -Exclude thumb.png | Remove-Item -Verbose
         Get-ChildItem "$GITHUB_WORKSPACE\" -recurse
