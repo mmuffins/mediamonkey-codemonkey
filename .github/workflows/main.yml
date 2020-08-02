@@ -33,7 +33,6 @@ jobs:
       run: |
         Get-ChildItem "${{ github.workspace }}\images\" -Exclude thumb.png | Remove-Item -Verbose
         Remove-Item "${{ github.workspace }}\.github" -Recurse -Verbose
-        Remove-Item "${{ github.workspace }}\.git" -Recurse -Verbose
         Get-ChildItem "${{ github.workspace }}"
                 
     - name: Zip Files
