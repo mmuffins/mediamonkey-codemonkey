@@ -36,7 +36,7 @@ jobs:
       uses: papeloto/action-zip@v1
       with:
         files: ${{ github.workspace }}
-        dest: ${{ github.workspace }}\artifacts\${{ env.EXTENSION_FILE_NAME }}
+        dest: ${{ env.EXTENSION_FILE_NAME }}
         recursive: true
         
     - name: Check artifacts
