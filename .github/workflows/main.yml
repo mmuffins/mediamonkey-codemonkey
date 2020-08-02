@@ -25,6 +25,7 @@ jobs:
         Get-ChildItem "${{ github.workspace }}\images\" -Exclude thumb.png | Remove-Item -Verbose
         Write-Output "RUN_NUMBER $GITHUB_RUN_NUMBER"
         Write-Output "RunNumber ${{ github.run.number }}"
+        Write-Output "envRunNumber ${{ env.GITHUB_RUN_NUMBER }}"
 
     - name: Get Variables
       run: printenv
