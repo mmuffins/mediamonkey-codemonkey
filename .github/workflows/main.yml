@@ -23,9 +23,9 @@ jobs:
       shell: pwsh
       run: |
         Get-ChildItem "${{ github.workspace }}\images\" -Exclude thumb.png | Remove-Item -Verbose
-        ${{ github.run.number }}
+        #${{ github.run.number }}
         #${{ env.GITHUB_RUN_NUMBER }}
-        #$env:GITHUB_RUN_NUMBER
+        $env:GITHUB_RUN_NUMBER
 
     - name: Get Variables
       run: printenv
