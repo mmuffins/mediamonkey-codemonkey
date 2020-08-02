@@ -1,5 +1,3 @@
-# This is a basic workflow to help you get started with Actions
-
 name: CI
 
 on:
@@ -25,8 +23,7 @@ jobs:
       shell: pwsh
       run: |
         Get-ChildItem "${{ github.workspace }}\images\" -Exclude thumb.png | Remove-Item -Verbose
-        Write-Output "Workspace ${{ github.workspace }}"
-        Write-Output "RunId ${{ github.run.it }}"
+        Write-Output "RUN_NUMBER ${{ GITHUB_RUN_NUMBER }}"
         Write-Output "RunNumber ${{ github.run.number }}"
 
     - name: Get Variables
