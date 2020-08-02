@@ -23,12 +23,21 @@ jobs:
       shell: pwsh
       run: |
         Get-ChildItem "${{ github.workspace }}\images\" -Exclude thumb.png | Remove-Item -Verbose
-        #${{ github.run.number }}
+        Write-Output "xx-x-x-x-x"
+        Write-Output "RUN_NUMBER $GITHUB_RUN_NUMBER"
+        Write-Output "xx-x-x-x-x"
+        ${{ github.run.number }}
+        Write-Output "xx-x-x-x-x"
         ${{ env.GITHUB_RUN_NUMBER }}
-        #$env:GITHUB_RUN_NUMBER
+        Write-Output "xx-x-x-x-x"
+        $env:GITHUB_RUN_NUMBER
 
-    - name: Get Variables
-      run: printenv
+    - name: Update version
+      shell: pwsh
+      run: |
+        Set-Location '${{ github.workspace }}'
+        (Get-Content .\info.json -Raw) -replace '"version":"(.*)"', '"version":$1'
+        Get-Content .\info.json -Raw
     
     - name: Zip Files
       run: cd '${{ github.workspace }}' && zip -r ${{ env.EXTENSION_FILE_NAME }} . -x ".git/*" ".github/*"
