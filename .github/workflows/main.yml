@@ -24,8 +24,9 @@ jobs:
     - name: RunId
       shell: pwsh
       run: |
+        Write-Output "Workspace ${{ github.workspace }}"
         Write-Output "RunId ${{ github.run.it }}"
-        Write-Output "RunId ${{ github.run.number }}"
+        Write-Output "RunNumber ${{ github.run.number }}"
 
     - name: Remove images
       shell: pwsh
@@ -36,10 +37,11 @@ jobs:
       uses: papeloto/action-zip@v1
       with:
         files: ${{ github.workspace }}
-        dest: ${{ env.EXTENSION_FILE_NAME }}
+        dest: archive\${{ env.EXTENSION_FILE_NAME }}
         recursive: true
         
-    - name: Check artifacts
-      shell: pwsh
-      run: |
-        Get-ChildItem "${{ github.workspace }}\" -recurse
+    - uses: actions/upload-artifact@v2
+      with:
+        name: extension
+        path: ${{ github.workspace }}\archive\${{ env.EXTENSION_FILE_NAME }}
+
