@@ -35,12 +35,17 @@ jobs:
         Remove-Item "${{ github.workspace }}\.github" -Recurse -Verbose
         Get-ChildItem "${{ github.workspace }}"
                 
+    #- name: Zip Files
+    #  uses: papeloto/action-zip@v1
+    #  with:
+    #    files: ${{ github.workspace }}
+   #     dest: ${{ env.EXTENSION_FILE_NAME }}
+    #    recursive: true
+      
     - name: Zip Files
-      uses: papeloto/action-zip@v1
+      uses: TonyBogdanov/zip@1.0
       with:
-        files: ${{ github.workspace }}
-        dest: ${{ env.EXTENSION_FILE_NAME }}
-        recursive: true
+          args: zip -qq -r '${{ github.workspace }}' '${{ github.workspace }}\${{ env.EXTENSION_FILE_NAME }}'
         
     - name: Upload artifact
       uses: actions/upload-artifact@v2
