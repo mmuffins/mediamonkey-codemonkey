@@ -20,21 +20,15 @@ jobs:
     
     steps:
     - uses: actions/checkout@v2
-      
-    #- name: RunId
-    #  shell: pwsh
-    #  run: |
-    #    Write-Output "Workspace ${{ github.workspace }}"
-    #    Write-Output "RunId ${{ github.run.it }}"
-    #    Write-Output "RunNumber ${{ github.run.number }}"
 
-    #- name: Remove build items
-    #  shell: pwsh
-    #  run: |
-    #    Get-ChildItem "${{ github.workspace }}\images\" -Exclude thumb.png | Remove-Item -Verbose
-    #    # Remove-Item "${{ github.workspace }}\.github" -Recurse -Verbose
-    #    Get-ChildItem "${{ github.workspace }}"
-    
+    - name: Remove images
+      shell: pwsh
+      run: |
+        Get-ChildItem "${{ github.workspace }}\images\" -Exclude thumb.png | Remove-Item -Verbose
+        Write-Output "Workspace ${{ github.workspace }}"
+        Write-Output "RunId ${{ github.run.it }}"
+        Write-Output "RunNumber ${{ github.run.number }}"
+        Write-Output "$env:"
     
     - name: Zip Files
       run: cd '${{ github.workspace }}' && zip -r ${{ env.EXTENSION_FILE_NAME }} . -x ".git/*" ".github/*"
