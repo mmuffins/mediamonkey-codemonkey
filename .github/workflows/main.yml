@@ -24,6 +24,6 @@ jobs:
     - name: Remove images
       shell: pwsh
       run: |
-        Get-ChildItem "$FIRST_NAME\" -recurse
-        Get-ChildItem "$FIRST_NAME\images\" -Exclude thumb.png | Remove-Item
-        Get-ChildItem "$FIRST_NAME\" -recurse
+        Get-ChildItem "$GITHUB_WORKSPACE\" -recurse
+        Get-ChildItem "$GITHUB_WORKSPACE\images\" -Exclude thumb.png | Remove-Item
+        Get-ChildItem "$GITHUB_WORKSPACE\" -recurse
