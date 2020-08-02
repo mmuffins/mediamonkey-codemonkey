@@ -28,7 +28,9 @@ jobs:
         Write-Output "Workspace ${{ github.workspace }}"
         Write-Output "RunId ${{ github.run.it }}"
         Write-Output "RunNumber ${{ github.run.number }}"
-        Write-Output "$env:"
+
+    - name: Get Variables
+      run: printenv
     
     - name: Zip Files
       run: cd '${{ github.workspace }}' && zip -r ${{ env.EXTENSION_FILE_NAME }} . -x ".git/*" ".github/*"
