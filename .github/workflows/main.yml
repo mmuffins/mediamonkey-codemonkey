@@ -32,15 +32,17 @@ jobs:
       shell: pwsh
       run: |
         Get-ChildItem "${{ github.workspace }}\images\" -Exclude thumb.png | Remove-Item -Verbose
+        Get-ChildItem "${{ github.workspace }}"
                 
     - name: Zip Files
       uses: papeloto/action-zip@v1
       with:
-        files: ${{ github.workspace }}
+        files: ${{ github.workspace }}\
         dest: archive\${{ env.EXTENSION_FILE_NAME }}
         recursive: true
         
-    - uses: actions/upload-artifact@v2
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
       with:
         name: extension
         path: ${{ github.workspace }}\archive\${{ env.EXTENSION_FILE_NAME }}
