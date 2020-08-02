@@ -1,8 +1,9 @@
 {
     "title": "Code Monkey",
-    "id": "skin_codemonkey",
+    "id": "Code Monkey",
     "description": "Dark skin inspired by Visual Studio and Visual Studio Code.",
     "version": "1.0.0",
     "type": "skin",
-    "author": "mmuffins"
+    "author": "mmuffins",
+    "icon": "images/thumb.png"
 }
