@@ -37,7 +37,7 @@ jobs:
     
     
     - name: Zip Files
-      run: zip -r ${{ env.EXTENSION_FILE_NAME }} ${{ github.workspace }}
+      run: zip -r ${{ github.workspace }}/${{ env.EXTENSION_FILE_NAME }} ${{ github.workspace }} -x "${{ github.workspace }}/.git/*" "${{ github.workspace }}/.github/*"
     
     #- name: Zip Files
     #  uses: papeloto/action-zip@v1
@@ -61,5 +61,5 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: extension
-        path: ${{ github.workspace }}\${{ env.EXTENSION_FILE_NAME }}
+        path: ${{ github.workspace }}/${{ env.EXTENSION_FILE_NAME }}
 
