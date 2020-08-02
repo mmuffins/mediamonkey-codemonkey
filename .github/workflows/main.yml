@@ -26,7 +26,7 @@ jobs:
       run: |
         Write-Output "Hello ${{ github.event.inputs.name }}"
         Write-Output "Hello1 ${{ github.workspace }}"
-        Write-Output "Hello2 ${{ GITHUB_WORKSPACE }}"
+        Write-Output "Hello2 $GITHUB_WORKSPACE"
         Get-ChildItem "$GITHUB_WORKSPACE\" -recurse
         Get-ChildItem "$GITHUB_WORKSPACE\images\" -Exclude thumb.png | Remove-Item -Verbose
         Get-ChildItem "$GITHUB_WORKSPACE\" -recurse
