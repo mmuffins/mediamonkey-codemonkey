@@ -2,8 +2,6 @@
 
 name: CI
 
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
 on:
   workflow_dispatch:
   push:
@@ -13,6 +11,8 @@ on:
     branches: 
       - master
 
+env:
+  EXTENSION_FILE_NAME: codemonkey.mmip 
 
 jobs:
   build:
@@ -20,11 +20,26 @@ jobs:
     
     steps:
     - uses: actions/checkout@v2
+      
+    - name: RunId
+      shell: pwsh
+      run: |
+        Write-Output "RunId ${{ github.run.it }}"
+        Write-Output "RunId ${{ github.run.number }}"
 
     - name: Remove images
       shell: pwsh
       run: |
-        Write-Output "Hello1 ${{ github.workspace }}"
-        Get-ChildItem "${{ github.workspace }}\" -recurse
         Get-ChildItem "${{ github.workspace }}\images\" -Exclude thumb.png | Remove-Item -Verbose
+                
+    - name: Zip Files
+      uses: papeloto/action-zip@v1
+      with:
+        files: ${{ github.workspace }}
+        dest: ${{ github.workspace }}\artifacts\${{ env.EXTENSION_FILE_NAME }}
+        recursive: true
+        
+    - name: Check artifacts
+      shell: pwsh
+      run: |
         Get-ChildItem "${{ github.workspace }}\" -recurse
