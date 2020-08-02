@@ -44,7 +44,7 @@ jobs:
       
     - uses: montudor/action-zip@v0.1.0
       with:
-        args: zip -qq -r "./mediamonkey-codemonkey/codemonkey.zip" "./mediamonkey-codemonkey"
+        args: zip -qq -r "/home/runner/work/mediamonkey-codemonkey/mediamonkey-codemonkey/codemonkey.zip" "/home/runner/work/mediamonkey-codemonkey/mediamonkey-codemonkey"
       
     #- name: Zip Files
     #  uses: thedoctor0/zip-release@master
