@@ -43,10 +43,12 @@ jobs:
     #    recursive: true
       
     - name: Zip Files
-      uses: TonyBogdanov/zip@1.0
+      uses: thedoctor0/zip-release@master
       with:
-          args: zip -qq -r '${{ github.workspace }}' '${{ github.workspace }}\${{ env.EXTENSION_FILE_NAME }}'
-        
+        filename: ${{ env.EXTENSION_FILE_NAME }}
+        path: ${{ github.workspace }}
+        exclusions: '*.git*'
+
     - name: Upload artifact
       uses: actions/upload-artifact@v2
       with:
