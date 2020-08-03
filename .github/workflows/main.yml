@@ -47,6 +47,7 @@ jobs:
         Write-Output $env:VERSION
         gci env:
     
+    # version file?
     - name: Zip Files
       run: cd '${{ github.workspace }}' && zip -r ${{ env.EXTENSION_FILE_NAME }} . -x ".git/*" ".github/*"
     
