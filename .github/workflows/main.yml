@@ -34,6 +34,7 @@ jobs:
         $version = [Management.Automation.SemanticVersion]::new($fileVersion.Major, $fileVersion.Minor, $env:GITHUB_RUN_NUMBER)
         
         Write-Output "Setting version to $version"
+        Write-Output "::debug::Setting version to $version"
         Write-Output "::set-env name=VERSION::$($version.ToString())"
         
         $fileContent.version = $version.ToString()
@@ -55,3 +56,10 @@ jobs:
         name: extension
         path: ${{ github.workspace }}/${{ env.EXTENSION_FILE_NAME }}
         
+    - name: Create Release
+      uses: actions/create-release@v1
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: Release ${{ github.ref }}
+        draft: true
+        prerelease: true
