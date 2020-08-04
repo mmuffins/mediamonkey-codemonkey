@@ -4,10 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - dev
-  pull_request:
-    branches: 
-      - master
+      - MASTER
 
 env:
   EXTENSION_FILE_NAME: codemonkey.mmip 
@@ -59,8 +56,8 @@ jobs:
       with:
         tag_name: ${{ env.VERSION }} 
         release_name: ${{ env.VERSION }} 
-        draft: true
-        prerelease: true
+        draft: false
+        prerelease: false
         
     - name: Upload Release Asset
       id: upload-release-asset 
