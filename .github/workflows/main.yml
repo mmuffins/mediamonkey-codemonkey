@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - MASTER
+      - master
 
 env:
   EXTENSION_FILE_NAME: codemonkey.mmip 
