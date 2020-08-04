@@ -1,22 +1,17 @@
-# This is a basic workflow to help you get started with Actions
+name: Create Release
 
-name: CI
-
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
 on:
   workflow_dispatch:
   push:
     branches:
-      - dev
-  pull_request:
-    branches: 
-      - master
+      - MASTER
 
+env:
+  EXTENSION_FILE_NAME: codemonkey.mmip 
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     
     steps:
     - uses: actions/checkout@v2
@@ -24,6 +19,53 @@ jobs:
     - name: Remove images
       shell: pwsh
       run: |
-        Get-ChildItem "$FIRST_NAME\" -recurse
-        Get-ChildItem "$FIRST_NAME\images\" -Exclude thumb.png | Remove-Item
-        Get-ChildItem "$FIRST_NAME\" -recurse
+        Get-ChildItem "${{ github.workspace }}\images\" -Exclude thumb.png | Remove-Item -Verbose
+        $env:GITHUB_RUN_NUMBER
+
+    - name: Set version
+      shell: pwsh
+      run: |
+        $infoFile = '${{ github.workspace }}\info.json'
+        $fileContent = Get-Content $infoFile | ConvertFrom-Json
+        $fileVersion = [Management.Automation.SemanticVersion]::Parse($fileContent.version)
+        $version = [Management.Automation.SemanticVersion]::new($fileVersion.Major, $fileVersion.Minor, $env:GITHUB_RUN_NUMBER)
+        
+        Write-Output "Setting version to $version"
+        Write-Output "::debug::Setting version to $version"
+        Write-Output "::set-env name=VERSION::$($version.ToString())"
+        
+        $fileContent.version = $version.ToString()
+        $fileContent | ConvertTo-Json -Depth 99 | Set-Content $infoFile
+        Get-Content $infoFile
+    
+    # version file?
+    - name: Zip Files
+      run: cd '${{ github.workspace }}' && zip -r ${{ env.EXTENSION_FILE_NAME }} . -x ".git/*" ".github/*"
+    
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: extension
+        path: ${{ github.workspace }}/${{ env.EXTENSION_FILE_NAME }}
+        
+    - name: Create Release
+      uses: actions/create-release@v1
+      id: create_release
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+      with:
+        tag_name: ${{ env.VERSION }} 
+        release_name: ${{ env.VERSION }} 
+        draft: false
+        prerelease: false
+        
+    - name: Upload Release Asset
+      id: upload-release-asset 
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ${{ github.workspace }}/${{ env.EXTENSION_FILE_NAME }}
+        asset_name: ${{ env.EXTENSION_FILE_NAME }}
+        asset_content_type: application/zip
