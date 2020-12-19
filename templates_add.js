@@ -22,7 +22,7 @@ window.templates.setLVPopupStyles = function (img, div) {
             nowplaying: 'rgb(255, 255, 150)',
             iconsHover: hClr,
             textHover: 'rgb(255, 215, 70)'
-        });
+        }, div.parentElement.controlClass.uniqueID);
     } else {
         var hClr = getShiftedRGB(-20, clr);
         templates.setPopupListColors(div.controlClass.uniqueID, {
@@ -32,6 +32,6 @@ window.templates.setLVPopupStyles = function (img, div) {
             nowplaying: 'rgb(128, 128, 0)',
             iconsHover: hClr,
             textHover: 'rgb(90, 90, 0)'
-        });
+        }, div.parentElement.controlClass.uniqueID);
     }
 };
