@@ -19,7 +19,7 @@ jobs:
     - name: Clean up addon directory
       shell: pwsh
       run: |
-        Get-ChildItem "${{ github.workspace }}\images\" -Exclude thumb.png | Remove-Item -Force -Verbose
+        Remove-Item -Path "${{ github.workspace }}/images" -Recurse -Force -Verbose
         Remove-Item -Path "${{ github.workspace }}/.git" -Recurse -Force -Verbose
         Remove-Item -Path "${{ github.workspace }}/.github" -Recurse -Force -Verbose
 
