@@ -3,7 +3,7 @@ A dark skin for MediaMonkey 5 taking visual queues from Visual Studio and Visual
 
 ![](images/preview-mainwindow.png)
 
-<img src="https://github.com/mmuffins/mediamonkey-codemonkey/raw/dev/images/preview-properties.png" width="714px">
+<img src="images/preview-properties.png" width="60%">
 
 
 ## Installation
