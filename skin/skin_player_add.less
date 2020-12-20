@@ -39,32 +39,30 @@
 }
 
 [data-id='player']{
-    .seekBar {
+    & .seekBar {
         background-color: @textColor;
         border-radius: 0.5px;
-        left: @units0_125;
-        right: @units0_125;
+        left: @units0_5;
     }
     
-    .seekBarBefore {
+    & .seekBarBefore {
         background-color: @warning2Color;
-        margin-left: @units0_125;
-        margin-right: @units0_125;
+        margin-left: @units0_5;
     }
     
-    .seekBarThumb {
+    & .seekBarThumb {
         display: none;
     }
     
-    .ratingCanvas[data-hover] .ratingStar {
+    & .ratingCanvas[data-hover] .ratingStar {
         fill: @warning2Color;
     }
     
-    .ticksOuter .tick {
+    & .ticksOuter .tick {
         background-color: @invertedSecondaryColor;
+        display:none;
     }
-} 
-
+}
 
 .playerButton {
     &:hover:not([data-disabled]), &:hover:not([data-disabled]) label, &:hover .ratingStar {
