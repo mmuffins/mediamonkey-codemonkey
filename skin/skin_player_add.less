@@ -38,30 +38,33 @@
 	fill: @invertedColor;
 }
 
-[data-id='player'] .seekBar {
-    background-color: @textColor;
-    border-radius: 0.5px;
-    left: @units0_125;
-    right: @units0_125;
-}
+[data-id='player']{
+    .seekBar {
+        background-color: @textColor;
+        border-radius: 0.5px;
+        left: @units0_125;
+        right: @units0_125;
+    }
+    
+    .seekBarBefore {
+        background-color: @warning2Color;
+        margin-left: @units0_125;
+        margin-right: @units0_125;
+    }
+    
+    .seekBarThumb {
+        display: none;
+    }
+    
+    .ratingCanvas[data-hover] .ratingStar {
+        fill: @warning2Color;
+    }
+    
+    .ticksOuter .tick {
+        background-color: @invertedSecondaryColor;
+    }
+} 
 
-[data-id='player'] .seekBarBefore {
-    background-color: @warning2Color;
-    margin-left: @units0_125;
-    margin-right: @units0_125;
-}
-
-[data-id='player'] .seekBarThumb {
-    display: none;
-}
-
-[data-id='player'] .ratingCanvas[data-hover] .ratingStar {
-    fill: @warning2Color;
-}
-
-[data-id='player'] .ticksOuter .tick {
-    background-color: @invertedSecondaryColor;
-}
 
 .playerButton {
     &:hover:not([data-disabled]), &:hover:not([data-disabled]) label, &:hover .ratingStar {
@@ -87,7 +90,7 @@
 }
 
 [data-id='player-title'] {
-    font-size: @units1_2;
+    font-size: @units1_0;
 }
 
 .playerButtonPushEffect {
