@@ -1,46 +1,45 @@
 <!-- Player -->
-<div data-id="player" class="flex row" data-control-class="Player" data-init-params="{closable: true, closeAction: actions.view.player}">
-    <div data-id="playerLeftButtons" class="playerButtons flex row static verticalCenter">
-        <div data-id="player-prev" class="playerButton playerSmallButton" data-icon="player_prev" data-player-control="previous">
+<div data-id="player" class="flex column" data-control-class="Player">
+    <div data-id="player-waveform" class="stretchWidth" data-control-class="Waveform" data-player-control="waveform" data-optional="{group: 40, order: 20}" style="display: none"></div>
+    <div class="flex row">
+        <div data-id="playerLeftButtons" class="playerButtons flex row static verticalCenter">
+            <div data-id="player-prev" class="playerButton playerMediumButton" data-icon="player_prev" data-player-control="previous" data-optional="{group: 10, order: 10}">
+            </div>
+            <div data-id="player-play" class="playerButton playerBigButton" data-icon="player_play" data-player-control="play">
+            </div>
+            <div data-id="player-pause" class="playerButton playerBigButton" data-icon="player_pause" data-player-control="pause">
+            </div>
+            <div data-id="player-stop" class="playerButton playerBigButton" data-icon="player_stop" data-player-control="stop" data-optional="{group: 10, order: 20}" style="display: none">
+            </div>
+            <div data-id="player-next" class="playerButton playerMediumButton" data-icon="player_next" data-player-control="next" data-optional="{group: 10, order: 30}">
+            </div>
         </div>
-        <div data-id="player-play" class="playerButton playerSmallButton" data-icon="player_play" data-player-control="play">
+
+        <label data-id="player-ltime" class="verticalCenter vSeparatorTiny" data-player-control="time">00:00:00</label>
+
+        <div class="dynamic fill flex flexcenter column vSeparatorTiny">
+            <div data-id="player-seekbar" data-control-class="Slider" style="align-self: stretch; z-index: 1;" data-init-params="{orientation: 'horizontal', invert: false, min: 0, max: 0}" data-player-control="seek" data-optional="{group: 40, order: 10}" style="display: none"></div>
+            <div data-id="player-title" class="fill textCenter noOverflow" style="position: absolute; top: 10%; max-height: 30%" data-player-control="trackSummary" data-optional="{group: 20, order: 10}"></div>
+            <div data-id="progressContainer" data-hideInFullWindowMode class="content" style="position: absolute; bottom: 8%; left: 0; right: 0"></div>
+            <div data-id="player-rating" data-control-class="Rating" data-init-params="{starWidth: '1.72em', starMargin: '0.15em'}" style="position: absolute; bottom: 10%; left: 0; right: 0; max-height: 30%"> data-player-control="rating" data-optional="{group: 20, order: 20, title:'Rating'}"  style="display: none"></div>
         </div>
-        <div data-id="player-pause" class="playerButton playerSmallButton" data-icon="player_pause" data-player-control="pause">
+
+        <label data-id="player-rtime" class="verticalCenter vSeparatorTiny" data-player-control="remainingTime" data-optional="{group: 20, order: 30}">-00:00:00</label>
+        <div data-id="player-albumArt" class="playerBigButton imageSquare border" data-player-control="albumArt" data-optional="{group: 20, order: 50, title:'Album Art'}">
+            <div data-id="player-noaa" data-icon="unknownAA" class="allinside autosize box autoMargin"></div>
+            <img data-id="player-artworkImg" class="allinside autosize box autoMargin"/>
+        </div>        
+        <div data-id="player-vis-cont" class="verticalCenter margins" style="width:50px" data-optional="{group: 20, order: 40, title: 'Visualizer'}" style="display: none">
+            <div data-id="player-vis" data-control-class="Visualizer" data-player-control="visualizer"></div>
         </div>
-        <div data-id="player-next" class="playerButton playerSmallButton" data-icon="player_next" data-player-control="next">
+        <div data-id="playerRightButtons" class="flex row static verticalCenter">
+            <div data-id="player-repeat" class="playerButton playerSmallButton checkable" data-icon="repeatOne" data-player-control="repeat" data-optional="{group: 30, order: 10}" style="display: none">
+            </div>
+            <div data-id="player-shuffle" class="playerButton playerSmallButton checkable" data-icon="shuffle" data-player-control="shuffle" data-optional="{group: 30, order: 20}" style="display: none">
+            </div>
+            <div data-id="player-playto" class="playerButton playerSmallButton" data-icon="cast" data-player-control="playTo" data-init-params="{noAddClasses: true}" data-control-class="MenuButton" data-optional="{group: 30, order: 30}" style="display: none">
+            </div>
+            <div data-tip="Volume bar" class="paddingSides" data-control-class="Slider" data-init-params="{orientation: 'horizontal', invert: false, min: 0, max:100, tickPlacement: 'bottomRight', tickInterval: 50, wheelStep: 5}" data-id="player-volumebar" data-player-control="volume" />
         </div>
-    </div>
-    <div data-id="playerMiddle" class="dynamic verticalCenter">
-        <table data-id="playerTable">
-            <tr>
-                <td colspan="3" align="center">
-                    <label data-id="player-title" class="textCenter" data-player-control="titleArtist"></label>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    <div data-id="player-seekbar" class="stretchWidth" data-control-class="Slider" data-init-params="{orientation: 'horizontal', invert: false, min: 0, max: 0}" data-player-control="seek"></div>
-                </td>
-            </tr>
-            <tr>
-                <td data-id="td_player-ltime">
-                    <label id="player-ltime" class="smallText" data-player-control="time">00:00:00</label>
-                </td>
-                <td align="center">
-                    <div data-id="player-rating" data-control-class="Rating" data-init-params="{starWidth: '1.72em', starMargin: '0.15em'}" data-player-control="rating"></div>
-                </td>
-                <td data-id="td_player-rtime">
-                    <label data-id="player-rtime" class="smallText" data-player-control="remainingTime">-00:00:00</label>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div data-id="playerRightButtons" class="flex row static verticalCenter">
-        <div data-id="player-albumArt" class="playerSmallButton imageSquare border" data-player-control="albumArt">
-            <div data-id="player-noaa" data-icon="unknownAA" class="allinside autosize box autoMargin" ></div>
-            <img data-id="player-artworkImg" class="allinside autosize box autoMargin" ></img>
-        </div>
-        <div data-id="player-np" class="playerButton playerSmallButton" data-icon="song" data-player-control="nowplaying" ></div>
-        <div title="Volume bar" data-control-class="Slider" data-init-params="{min: 0, max:100, tickPlacement: 'topLeft', tickInterval: 50}" data-id="player-volumebar" data-player-control="volume" ></div>
     </div>
 </div>

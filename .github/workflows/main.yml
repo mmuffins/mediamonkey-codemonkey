@@ -7,7 +7,7 @@ on:
       - master
 
 env:
-  EXTENSION_FILE_NAME: codemonkey.mmip 
+  EXTENSION_FILE_NAME: CodeMonkey 
 
 jobs:
   build:
@@ -16,11 +16,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Remove images
+    - name: Clean up addon directory
       shell: pwsh
       run: |
-        Get-ChildItem "${{ github.workspace }}\images\" -Exclude thumb.png | Remove-Item -Verbose
-        $env:GITHUB_RUN_NUMBER
+        Get-ChildItem "${{ github.workspace }}\images\" -Exclude thumb.png | Remove-Item -Force -Verbose
+        Remove-Item -Path "${{ github.workspace }}/.git" -Recurse -Force -Verbose
+        Remove-Item -Path "${{ github.workspace }}/.github" -Recurse -Force -Verbose
 
     - name: Set version
       shell: pwsh
@@ -31,22 +32,20 @@ jobs:
         $version = [Management.Automation.SemanticVersion]::new($fileVersion.Major, $fileVersion.Minor, $env:GITHUB_RUN_NUMBER)
         
         Write-Output "Setting version to $version"
-        Write-Output "::debug::Setting version to $version"
-        Write-Output "::set-env name=VERSION::$($version.ToString())"
+        "VERSION=$($version.ToString())" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
         
         $fileContent.version = $version.ToString()
         $fileContent | ConvertTo-Json -Depth 99 | Set-Content $infoFile
         Get-Content $infoFile
     
-    # version file?
     - name: Zip Files
-      run: cd '${{ github.workspace }}' && zip -r ${{ env.EXTENSION_FILE_NAME }} . -x ".git/*" ".github/*"
+      run: cd '${{ github.workspace }}' && zip -r ${{ env.EXTENSION_FILE_NAME }}${{ env.VERSION }}.mmip .
     
     - name: Upload artifact
       uses: actions/upload-artifact@v2
       with:
         name: extension
-        path: ${{ github.workspace }}/${{ env.EXTENSION_FILE_NAME }}
+        path: ${{ github.workspace }}/${{ env.EXTENSION_FILE_NAME }}${{ env.VERSION }}.mmip
         
     - name: Create Release
       uses: actions/create-release@v1
@@ -56,7 +55,7 @@ jobs:
       with:
         tag_name: ${{ env.VERSION }} 
         release_name: ${{ env.VERSION }} 
-        draft: false
+        draft: true
         prerelease: false
         
     - name: Upload Release Asset
@@ -66,6 +65,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ${{ github.workspace }}/${{ env.EXTENSION_FILE_NAME }}
-        asset_name: ${{ env.EXTENSION_FILE_NAME }}
+        asset_path: ${{ github.workspace }}/${{ env.EXTENSION_FILE_NAME }}${{ env.VERSION }}.mmip
+        asset_name: ${{ env.EXTENSION_FILE_NAME }}${{ env.VERSION }}.mmip
         asset_content_type: application/zip
