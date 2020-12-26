@@ -1,5 +1,5 @@
 # Code Monkey Skin for MediaMonkey
-A dark skin for MediaMonkey 5 taking visual queues from Visual Studio and Visual Studio Code.
+A dark skin for MediaMonkey 5 inspired by the color theme of Visual Studio.
 
 ![](images/preview-mainwindow.png)
 

@@ -1,7 +1,7 @@
 {
     "title": "Code Monkey",
     "id": "CodeMonkey",
-    "description": "A dark skin taking visual queues from Visual Studio and Visual Studio Code.",
+    "description": "A dark skin inspired by the color theme of Visual Studio.",
     "version": "1.0.0",
     "type": "skin",
     "author": "mmuffins",
