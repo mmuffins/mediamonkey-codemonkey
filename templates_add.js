@@ -15,7 +15,7 @@ window.templates.setLVPopupStyles = function (img, div) {
     var path = img.getAttribute('src');
     if (cachedColors[path]) {
         clr = cachedColors[path];
-        console.log(cachedColors);
+        // console.log(cachedColors);
     }
     else {
         clr = colorThief.getColor(img);
@@ -26,21 +26,17 @@ window.templates.setLVPopupStyles = function (img, div) {
     div.style.backgroundColor = backclr;
     LV.createPopupIndicator().style.fill = backclr;
 
-	var nowPlayingClr = ''; //nowPlaying color is !important by default in skin
-	if (clr[0] > 110 && (clr[1] + clr[2]) / 2 < clr[0] * 0.75) // r > 110 and avg of g&b < 0.75*r
-		nowPlayingClr = 'rgb(214, 227, 255)!important'; // if the background color is red, set the now playing color to a contrasting color (b/c pink blends in with it)
-
     // change background color	
-    if ((clr[0] + clr[1] + clr[2]) / 3 < 128) {
+    if(Math.round(((parseInt(clr[0]) * 299) + (parseInt(clr[1]) * 587) + (parseInt(clr[2]) * 114)) / 1000) <= 128) {
         var hClr = getShiftedRGB(20, clr);
         templates.setPopupListColors(div.controlClass.uniqueID, {
             text: 'white',
             hover: hClr,
             select: getShiftedRGB(50, clr),
             hoverSelect: getShiftedRGB(70, clr),
-            nowplaying: nowPlayingClr,
+            nowplaying: '#00d2ff !important',
             iconsHover: hClr,
-            textHover: 'rgb(255, 215, 70)'
+            textHover: 'rgb(0, 255, 255)'
         }, div.parentElement.controlClass.uniqueID);
     } else {
         var hClr = getShiftedRGB(-20, clr);
@@ -49,9 +45,9 @@ window.templates.setLVPopupStyles = function (img, div) {
             hover: hClr,
             select: getShiftedRGB(-50, clr),
             hoverSelect: getShiftedRGB(-70, clr),
-            nowplaying: nowPlayingClr,
+            nowplaying: '#0039ff !important',
             iconsHover: hClr,
-            textHover: 'rgb(90, 90, 0)'
+            textHover: 'rgb(0, 106, 255)'
         }, div.parentElement.controlClass.uniqueID);
     }
 };
