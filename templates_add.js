@@ -28,24 +28,26 @@ window.templates.setLVPopupStyles = function (img, div) {
 
     // change background color	
     if(Math.round(((parseInt(clr[0]) * 299) + (parseInt(clr[1]) * 587) + (parseInt(clr[2]) * 114)) / 1000) <= 128) {
-        var hClr = getShiftedRGB(20, clr);
+        var nowplayingClr = [0, 210, 255]
+        var hClr = getShiftedRGB(-20, nowplayingClr);
         templates.setPopupListColors(div.controlClass.uniqueID, {
             text: 'white',
             hover: hClr,
-            select: getShiftedRGB(50, clr),
-            hoverSelect: getShiftedRGB(70, clr),
-            nowplaying: '#00d2ff !important',
+            select: getShiftedRGB(-50, nowplayingClr),
+            hoverSelect: getShiftedRGB(-70, nowplayingClr),
+            nowplaying: 'rgb(' + nowplayingClr[0] + ', ' + nowplayingClr[1] + ', ' + nowplayingClr[2] + ') !important',
             iconsHover: hClr,
             textHover: 'rgb(0, 255, 255)'
         }, div.parentElement.controlClass.uniqueID);
     } else {
-        var hClr = getShiftedRGB(-20, clr);
+        var nowplayingClr = [0, 9, 228]
+        var hClr = getShiftedRGB(60, nowplayingClr);
         templates.setPopupListColors(div.controlClass.uniqueID, {
             text: 'black',
             hover: hClr,
-            select: getShiftedRGB(-50, clr),
-            hoverSelect: getShiftedRGB(-70, clr),
-            nowplaying: '#0039ff !important',
+            select: getShiftedRGB(80, nowplayingClr),
+            hoverSelect: getShiftedRGB(100, nowplayingClr),
+            nowplaying: 'rgb(' + nowplayingClr[0] + ', ' + nowplayingClr[1] + ', ' + nowplayingClr[2] + ') !important',
             iconsHover: hClr,
             textHover: 'rgb(0, 106, 255)'
         }, div.parentElement.controlClass.uniqueID);
