@@ -1,3 +1,22 @@
+.searchBox {
+    border: 1px solid @contrastColor;
+    background-color: @hoverBgColor;
+}
+
+.searchBox:hover {
+    border: 1px solid @warning2Color;
+    background-color: @hoverBg2Color;
+}
+
+.searchBox .es-edit, .searchBox .es-select {
+    background-color: transparent;
+    border: none !important
+}
+
+.searchBox .editable-select:hover > .es-edit  {
+    border: none !important;
+}
+
 .editable-select:hover > .es-select {
     fill: @warning2Color;
     background-color: @darkBgColor;
@@ -38,8 +57,8 @@
 
 .searchBox .es-edit,
 .searchBox .es-select {
-    color: @baseColor;
-    fill: @baseColor;    
+    color: @textColor;
+    fill: @textColor;    
 }
 
 .es-select, .flex > .es-select {

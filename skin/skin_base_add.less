@@ -4,7 +4,7 @@
 @warningColor: #1c97ea;
 @warning2Color: #007acc;
 @controlColor: #252526;
-@hoverColor: #68217a;
+@hoverColor: @warning2Color;
 @hoverBg2Color: #3e3e42;
 @hoverBgColor: #3e3e40;
 @contrastColor: #686868;
@@ -98,4 +98,8 @@ body {
 .ticksOuter .tick {
     background-color: @invertedSecondaryColor;
     display:none;
+}
+
+[data-control-class=TracklistFilter] .lvHeaderSingleItem {
+    border-color: transparent !important; 
 }
