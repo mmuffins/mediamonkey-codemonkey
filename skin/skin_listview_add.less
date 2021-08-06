@@ -24,6 +24,7 @@
 
     &[data-hover] {
 		background-color: @warning2Color;
+        color: @textColor !important;
 	}
     
 	.clickable:hover {
@@ -42,7 +43,7 @@
 }
 
 .lvItem[data-selected] .ratingCanvas[data-hover] .ratingStar, .lvItem.itemNowPlaying[data-selected] .ratingStar, .lvItem[data-selected] .itemNowPlaying .ratingStar {
-    fill: mix(@warningColor, @invertedColor, 90%);
+    fill: @textColor;
 }
 
 .lvItem[data-selected] {
