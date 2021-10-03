@@ -64,17 +64,10 @@ window.configInfo = {
         }
         else {
             app.setValue(`CodeMonkey_${colorName}`, userColor);
-            //setLessValues({colorName: userColor}, addon.ext_id);
-            //setLessValues(JSON.stringify(colorName = userColor}), addon.ext_id);
-
+            
             var colorObj = {};
             colorObj[colorName] = userColor;
             setLessValues(colorObj, addon.ext_id);
-
-            //works
-            //setLessValues({'warningColor': userColor}, addon.ext_id);
-            //setLessValues({'warning2Color': userColor}, addon.ext_id);
-            //setLessValues({'selectedColor': userColor}, addon.ext_id);
         }
     },
 
