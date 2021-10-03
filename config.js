@@ -1,6 +1,12 @@
 window.configInfo = {
 	load: function (pnlDiv, addon) {
+        pnlDiv.innerHTML += this.getPickerHtml("warning 2 Color", "warning2Color", "#007acc")
+        pnlDiv.innerHTML += this.getPickerHtml("selected Color", "selectedColor", "#264f78")
+        pnlDiv.innerHTML += this.getPickerHtml("warning 1 Color", "warningColor", "#1c97ea")
+        initializeControls(pnlDiv);
+
         var UI = getAllUIElements(pnlDiv);
+        
         var pickerInt = 1;
         this.initColorPicker(UI, "warning2Color", "#007acc", pickerInt++);
         this.initColorPicker(UI, "selectedColor", "#264f78", pickerInt++);
@@ -64,23 +70,23 @@ window.configInfo = {
         }
         else {
             app.setValue(`CodeMonkey_${colorName}`, userColor);
-            
+
             var colorObj = {};
             colorObj[colorName] = userColor;
             setLessValues(colorObj, addon.ext_id);
         }
     },
 
-    getPickerHtml: function(displayName, colorName, pickerName, resetButtonName, defaultValue){
+    getPickerHtml: function(displayName, colorName, defaultValue){
         return `
         <div class="padding flex row">
             <label>${displayName}:</label>
         </div>
         <div class="paddingLeft">
-            <div data-id="${pickerName}" data-control-class="ColorPicker" data-init-params="{size: 200, value: '${defaultValue}'}"></div>
+            <div data-id="${colorName}Picker" data-control-class="ColorPicker" data-init-params="{size: 200, value: '${defaultValue}'}"></div>
         </div>
         <div class="padding">
-            <div data-id="${resetButtonName}" data-control-class="Button">Reset changes</div>
+            <div data-id="btnReset${colorName}" data-control-class="Button">Reset changes</div>
         </div>
         `;
     }
