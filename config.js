@@ -1,14 +1,14 @@
 window.configInfo = {
     customizableColors: [
         {
-            Name: 'warningColor',
-            DisplayName: 'Warning 1 Color',
+            Name: 'highlightColor',
+            DisplayName: 'Highlight 1 Color',
             DefaultValue: '#1c97ea',
             InvalidSimilarColor: '#dcdcdc'
         },
         {
-            Name: 'warning2Color',
-            DisplayName: 'Warning 2 Color',
+            Name: 'highlight2Color',
+            DisplayName: 'Highlight 2 Color',
             DefaultValue: '#007acc',
             InvalidSimilarColor: '#dcdcdc'
         },

@@ -1,10 +1,12 @@
 @baseColor: #1e1e1e;
 @secondaryColor: #252526;
 @tertiaryColor: #333337;
-@warningColor: #1c97ea;
-@warning2Color: #007acc;
+@highlightColor: #1c97ea;
+@highlight2Color: #007acc;
+@warningColor: @highlightColor;
+@warning2Color: @highlight2Color;
 @controlColor: #252526;
-@hoverColor: @warning2Color;
+@hoverColor: @highlight2Color;
 @hoverBg2Color: #3e3e42;
 @hoverBgColor: #3e3e40;
 @contrastColor: #686868;
@@ -12,7 +14,6 @@
 @selectedColor: #264f78;
 @disabledSelectedColor: desaturate(mix(@baseColor, @selectedColor, 25%), 50%);
 @headerColor: #333337;
-@highlightColor: @warningColor;
 @highlightBgColor: @highlightColor;
 @darkBgColor: #1b1b1c;
 @invertedColor: #dcdcdc;
@@ -27,7 +28,7 @@
 @buttonDisabledBorderColor: #3F3F46;
 
 @windowBorderSize: 1px;
-@windowBorderColor: @warning2Color;
+@windowBorderColor: @highlight2Color;
 
 @baseFontSize: 13px;
 @fontLineSize: @units1_1;
@@ -73,7 +74,7 @@ body {
 // }
 
 [data-control-class=MainTabs] .tabsHeader[data-selected] {
-    background-color: @warning2Color;
+    background-color: @highlight2Color;
     color: @invertedColor;
 	fill: @invertedColor;
     border-bottom: none;
@@ -87,7 +88,7 @@ body {
 }
 
 .seekBarBefore {
-    background-color: @warning2Color;
+    background-color: @highlight2Color;
     border-radius: 0px;
 }
 
