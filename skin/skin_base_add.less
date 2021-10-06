@@ -21,6 +21,9 @@
 @titleBarTextColor: #999999;
 @textColor: #dcdcdc;
 
+@tabColor: @highlight2Color;
+@tabTextColor: @invertedColor;
+
 @buttonBgColor: #3f3f46;
 @buttonBorderColor: #555555;
 @buttonDisabledTextColor: #656565;
@@ -74,9 +77,9 @@ body {
 // }
 
 [data-control-class=MainTabs] .tabsHeader[data-selected] {
-    background-color: @highlight2Color;
-    color: @invertedColor;
-	fill: @invertedColor;
+    background-color: @tabColor;
+    color: @tabTextColor;
+	fill: @tabTextColor;
     border-bottom: none;
     font-weight: bold;
 //    border-bottom: 1px solid@highlightColor;
