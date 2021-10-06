@@ -4,19 +4,19 @@ window.configInfo = {
             Name: 'warningColor',
             DisplayName: 'Warning 1 Color',
             DefaultValue: '#1c97ea',
-            InvalidSimilarColor: '#FFFFFF'
+            InvalidSimilarColor: '#dcdcdc'
         },
         {
             Name: 'warning2Color',
             DisplayName: 'Warning 2 Color',
             DefaultValue: '#007acc',
-            InvalidSimilarColor: '#FFFFFF'
+            InvalidSimilarColor: '#dcdcdc'
         },
         {
             Name: 'selectedColor',
             DisplayName: 'selected Color',
             DefaultValue: '#264f78',
-            InvalidSimilarColor: '#FFFFFF'
+            InvalidSimilarColor: '#dcdcdc'
         },
     ],
 
