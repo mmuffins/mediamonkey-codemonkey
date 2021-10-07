@@ -2,19 +2,19 @@ window.configInfo = {
     customizableColors: [
         {
             Name: 'highlightColor',
-            DisplayName: 'Highlight 1 Color',
+            DisplayName: 'Highlight color',
             DefaultValue: '#1c97ea',
             InvalidSimilarColor: '#dcdcdc'
         },
         {
             Name: 'highlight2Color',
-            DisplayName: 'Highlight 2 Color',
+            DisplayName: 'Secondary highlight color',
             DefaultValue: '#007acc',
             InvalidSimilarColor: '#dcdcdc'
         },
         {
             Name: 'selectedColor',
-            DisplayName: 'selected Color',
+            DisplayName: 'Selection color',
             DefaultValue: '#264f78',
             InvalidSimilarColor: '#dcdcdc'
         },
@@ -25,8 +25,7 @@ window.configInfo = {
 
 	load: function (pnlDiv, addon) {
         this.addon = addon;
-        var pickerContainer = document.createElement('div');
-        pnlDiv.appendChild(pickerContainer);
+        var pickerContainer = qeid(pnlDiv, 'Colors')
         this.customizableColors.forEach(color =>{
             pickerContainer.innerHTML += this.getPickerHtml(color.DisplayName, color.Name, color.DefaultValue);
         });
@@ -40,7 +39,7 @@ window.configInfo = {
         });
         this.UI = getAllUIElements(pnlDiv);
 
-        this.UI.chbColorfulTabs.controlClass.checked = app.getValue(`${addon.ext_id}_colorfulTabs`, false);
+        this.UI.chbBrightTabs.controlClass.checked = app.getValue(`${addon.ext_id}_brightTabs`, false);
 	},
 
 	save: function(pnlDiv, addon) {
@@ -50,11 +49,11 @@ window.configInfo = {
             this.saveColorPicker(color.Name, color.DisplayName, color.InvalidSimilarColor);
         });
 
-        var colorfulTabs = this.UI.chbColorfulTabs.controlClass.checked;
+        var brightTabs = this.UI.chbBrightTabs.controlClass.checked;
         var tabtextColor;
         var tabColor;
         
-        if(colorfulTabs){
+        if(brightTabs){
             tabtextColor = '';
             tabColor = '';
             app.removeValue(`${addon.ext_id}_tabTextColor`);
@@ -67,7 +66,7 @@ window.configInfo = {
             app.setValue(`${addon.ext_id}_tabColor`, tabColor);
         }
 
-        app.setValue(`${addon.ext_id}_colorfulTabs`, colorfulTabs)
+        app.setValue(`${addon.ext_id}_brightTabs`, brightTabs)
         setLessValues({'tabTextColor': tabtextColor}, addon.ext_id);
         setLessValues({'tabColor': tabColor}, addon.ext_id);
 	},
@@ -106,15 +105,15 @@ window.configInfo = {
 
     getPickerHtml: function(displayName, colorName, defaultValue){
         return `
-        <div class="padding flex row">
-            <label>${displayName}:</label>
-        </div>
-        <div class="paddingLeft">
-            <div data-id="${colorName}Picker" data-control-class="ColorPicker" data-init-params="{size: 200, value: '${defaultValue}'}"></div>
-        </div>
-        <div class="padding">
-            <div data-id="btnReset${colorName}" data-control-class="Button">Reset changes</div>
-        </div>
+        <fieldset>
+            <legend>${displayName}</legend>
+            <div class="paddingLeft">
+                <div data-id="${colorName}Picker" data-control-class="ColorPicker" data-init-params="{size: 200, value: '${defaultValue}'}"></div>
+            </div>
+            <div class="padding">
+                <div data-id="btnReset${colorName}" data-control-class="Button">Reset to default</div>
+            </div>
+        </fieldset>
         `;
     },
 }
