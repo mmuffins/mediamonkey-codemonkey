@@ -33,9 +33,8 @@ window.configInfo = {
         initializeControls(pickerContainer);
         this.UI = getAllUIElements(pnlDiv);
         
-        var pickerInt = 1;
         this.customizableColors.forEach(color =>{
-            this.initColorPicker(color.Name, color.DefaultValue, pickerInt++);
+            this.initColorPicker(color.Name, color.DefaultValue);
         });
         this.UI = getAllUIElements(pnlDiv);
 
@@ -71,7 +70,7 @@ window.configInfo = {
         setLessValues({'tabColor': tabColor}, addon.ext_id);
 	},
 
-    initColorPicker: function (colorName, defaultValue, pickerInt){
+    initColorPicker: function (colorName, defaultValue){
         var userColor = app.getValue(`${this.addon.ext_id}_${colorName}`, defaultValue);
 
         var pickerName = `${colorName}Picker`;
@@ -80,8 +79,6 @@ window.configInfo = {
         localListen(this.UI[`btnReset${colorName}`], 'click', () => {
             this.UI[pickerName].controlClass.value = defaultValue;
         });
-
-        window[`picker${pickerInt}`] = this.UI[pickerName];
     },
 
     saveColorPicker: function(colorName, displayName, invalidSimilarColor){
