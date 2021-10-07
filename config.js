@@ -21,11 +21,11 @@ window.configInfo = {
     ],
 
 	load: function (pnlDiv, addon) {
+        var pickerContainer = document.createElement('div');
+        pnlDiv.appendChild(pickerContainer);
         this.customizableColors.forEach(color =>{
-            pnlDiv.innerHTML += this.getPickerHtml(color.DisplayName, color.Name, color.DefaultValue);
+            pickerContainer.innerHTML += this.getPickerHtml(color.DisplayName, color.Name, color.DefaultValue);
         });
-
-        var pickerContainer = qe(pnlDiv, '[pickerContainerX]');
 
         initializeControls(pickerContainer);
         var UI = getAllUIElements(pnlDiv);
