@@ -20,7 +20,11 @@ window.configInfo = {
         },
     ],
 
+    addon: null,
+    UI: null,
+
 	load: function (pnlDiv, addon) {
+        this.addon = addon;
         var pickerContainer = document.createElement('div');
         pnlDiv.appendChild(pickerContainer);
         this.customizableColors.forEach(color =>{
@@ -28,59 +32,63 @@ window.configInfo = {
         });
 
         initializeControls(pickerContainer);
-        var UI = getAllUIElements(pnlDiv);
+        this.UI = getAllUIElements(pnlDiv);
         
         var pickerInt = 1;
         this.customizableColors.forEach(color =>{
-            this.initColorPicker(UI, color.Name, color.DefaultValue, pickerInt++);
+            this.initColorPicker(color.Name, color.DefaultValue, pickerInt++);
         });
+        this.UI = getAllUIElements(pnlDiv);
+
+        this.UI.chbColorfulTabs.controlClass.checked = app.getValue(`${addon.ext_id}_colorfulTabs`, false);
 	},
 
 	save: function(pnlDiv, addon) {
-        var UI = getAllUIElements(pnlDiv);
+        this.UI = getAllUIElements(pnlDiv);
 
         this.customizableColors.forEach(color =>{
-            this.saveColor(UI, addon, color.Name, color.DisplayName, color.InvalidSimilarColor);
+            this.saveColorPicker(color.Name, color.DisplayName, color.InvalidSimilarColor);
         });
 
-        var colorfulTabs = UI.chbColorfulTabs.controlClass.checked;
+        var colorfulTabs = this.UI.chbColorfulTabs.controlClass.checked;
         var tabtextColor;
         var tabColor;
         
         if(colorfulTabs){
             tabtextColor = '';
             tabColor = '';
-            app.removeValue(`CodeMonkey_tabTextColor`);
-            app.removeValue(`CodeMonkey_tabColor`);
+            app.removeValue(`${addon.ext_id}_tabTextColor`);
+            app.removeValue(`${addon.ext_id}_tabColor`);
 
         } else {
             tabColor = "@baseColor";
             tabtextColor = '@highlightColor';
-            app.setValue(`CodeMonkey_tabTextColor`, tabtextColor);
-            app.setValue(`CodeMonkey_tabColor`, tabColor);
+            app.setValue(`${addon.ext_id}_tabTextColor`, tabtextColor);
+            app.setValue(`${addon.ext_id}_tabColor`, tabColor);
         }
 
+        app.setValue(`${addon.ext_id}_colorfulTabs`, colorfulTabs)
         setLessValues({'tabTextColor': tabtextColor}, addon.ext_id);
         setLessValues({'tabColor': tabColor}, addon.ext_id);
 	},
 
-    initColorPicker: function (UI, colorName, defaultValue, pickerInt){
-        var userColor = app.getValue(`CodeMonkey_${colorName}`, defaultValue);
+    initColorPicker: function (colorName, defaultValue, pickerInt){
+        var userColor = app.getValue(`${this.addon.ext_id}_${colorName}`, defaultValue);
 
         var pickerName = `${colorName}Picker`;
-        UI[pickerName].controlClass.value = userColor;
+        this.UI[pickerName].controlClass.value = userColor;
 
-        localListen(UI[`btnReset${colorName}`], 'click', () => {
-            UI[pickerName].controlClass.value = defaultValue;
+        localListen(this.UI[`btnReset${colorName}`], 'click', () => {
+            this.UI[pickerName].controlClass.value = defaultValue;
         });
 
-        window[`picker${pickerInt}`] = UI[pickerName];
+        window[`picker${pickerInt}`] = this.UI[pickerName];
     },
 
-    saveColor: function(UI, addon, colorName, displayName, invalidSimilarColor){
-        var userColor = UI[`${colorName}Picker`].controlClass.value;
+    saveColorPicker: function(colorName, displayName, invalidSimilarColor){
+        var userColor = this.UI[`${colorName}Picker`].controlClass.value;
 
-        if (UI[`${colorName}Picker`].controlClass.isSimilarTo(invalidSimilarColor)) {
+        if (this.UI[`${colorName}Picker`].controlClass.isSimilarTo(invalidSimilarColor)) {
             messageDlg(_(`The value you chose for color ${displayName} would result in text being unreadable. Please choose a different value.`), 
             'Error',
             ['btnOK'], 
@@ -88,11 +96,11 @@ window.configInfo = {
             undefined);
         }
         else {
-            app.setValue(`CodeMonkey_${colorName}`, userColor);
+            app.setValue(`${this.addon.ext_id}_${colorName}`, userColor);
 
             var colorObj = {};
             colorObj[colorName] = userColor;
-            setLessValues(colorObj, addon.ext_id);
+            setLessValues(colorObj, this.addon.ext_id);
         }
     },
 
