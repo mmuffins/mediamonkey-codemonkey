@@ -25,7 +25,9 @@ window.configInfo = {
             pnlDiv.innerHTML += this.getPickerHtml(color.DisplayName, color.Name, color.DefaultValue);
         });
 
-        initializeControls(pnlDiv);
+        var pickerContainer = qe(pnlDiv, '[pickerContainerX]');
+
+        initializeControls(pickerContainer);
         var UI = getAllUIElements(pnlDiv);
         
         var pickerInt = 1;
@@ -40,6 +42,26 @@ window.configInfo = {
         this.customizableColors.forEach(color =>{
             this.saveColor(UI, addon, color.Name, color.DisplayName, color.InvalidSimilarColor);
         });
+
+        var colorfulTabs = UI.chbColorfulTabs.controlClass.checked;
+        var tabtextColor;
+        var tabColor;
+        
+        if(colorfulTabs){
+            tabtextColor = '';
+            tabColor = '';
+            app.removeValue(`CodeMonkey_tabTextColor`);
+            app.removeValue(`CodeMonkey_tabColor`);
+
+        } else {
+            tabColor = "@baseColor";
+            tabtextColor = '@highlightColor';
+            app.setValue(`CodeMonkey_tabTextColor`, tabtextColor);
+            app.setValue(`CodeMonkey_tabColor`, tabColor);
+        }
+
+        setLessValues({'tabTextColor': tabtextColor}, addon.ext_id);
+        setLessValues({'tabColor': tabColor}, addon.ext_id);
 	},
 
     initColorPicker: function (UI, colorName, defaultValue, pickerInt){
