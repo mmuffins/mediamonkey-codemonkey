@@ -8,3 +8,8 @@ Download the latest release from the releases section and double click the downl
 
 ## Customization
 The skin can be customized by configuring user-defined highlight and selection colors. To do so, open the options menu and navigate to the Layout > Skin section. Pick Code Monkey from the list of available skins, and select custom colors for each of the available options.
+
+<p float="left">
+  <img src="images/custom_colors01.png" width="50" />
+  <img src="images/custom_colors02.png" width="50" /> 
+</p>
