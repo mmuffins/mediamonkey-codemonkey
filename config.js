@@ -38,7 +38,7 @@ window.configInfo = {
         });
         this.UI = getAllUIElements(pnlDiv);
 
-        this.UI.chbBrightTabs.controlClass.checked = app.getValue(`${addon.ext_id}_brightTabs`, false);
+        this.UI.chbBrightTabs.controlClass.checked = app.getValue(`${addon.ext_id}_brightTabs`, true);
 	},
 
 	save: function(pnlDiv, addon) {
