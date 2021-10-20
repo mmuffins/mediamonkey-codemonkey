@@ -21,8 +21,7 @@
 @titleBarTextColor: #999999;
 @textColor: #dcdcdc;
 
-@tabColor: @highlight2Color;
-@tabTextColor: @invertedColor;
+@tabColor: @headerColor;
 
 @buttonBgColor: #3f3f46;
 @buttonBorderColor: #555555;
@@ -78,11 +77,11 @@ body {
 
 [data-control-class=MainTabs] .tabsHeader[data-selected] {
     background-color: @tabColor;
-    color: @tabTextColor;
-	fill: @tabTextColor;
+    color: @invertedColor;
+	fill: @invertedColor;
     border-bottom: none;
+    border-top: 1px solid @highlight2Color;
     font-weight: bold;
-//    border-bottom: 1px solid@highlightColor;
 }
 
 .seekBar {

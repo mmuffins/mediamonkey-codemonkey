@@ -38,7 +38,7 @@ window.configInfo = {
         });
         this.UI = getAllUIElements(pnlDiv);
 
-        this.UI.chbBrightTabs.controlClass.checked = app.getValue(`${addon.ext_id}_brightTabs`, true);
+        this.UI.chbVs2019Tabs.controlClass.checked = app.getValue(`${addon.ext_id}_vs2019tabs`, false);
 	},
 
 	save: function(pnlDiv, addon) {
@@ -48,25 +48,18 @@ window.configInfo = {
             this.saveColorPicker(color.Name, color.DisplayName, color.InvalidSimilarColor);
         });
 
-        var brightTabs = this.UI.chbBrightTabs.controlClass.checked;
-        var tabtextColor;
+        var vs2019Tabs = this.UI.chbVs2019Tabs.controlClass.checked;
         var tabColor;
         
-        if(brightTabs){
-            tabtextColor = '';
-            tabColor = '';
-            app.removeValue(`${addon.ext_id}_tabTextColor`);
-            app.removeValue(`${addon.ext_id}_tabColor`);
-
-        } else {
-            tabColor = "@baseColor";
-            tabtextColor = '@highlightColor';
-            app.setValue(`${addon.ext_id}_tabTextColor`, tabtextColor);
+        if(vs2019Tabs){
+            tabColor = '@highlight2Color';
             app.setValue(`${addon.ext_id}_tabColor`, tabColor);
+        } else {
+            tabColor = '';
+            app.removeValue(`${addon.ext_id}_tabColor`);
         }
 
-        app.setValue(`${addon.ext_id}_brightTabs`, brightTabs)
-        setLessValues({'tabTextColor': tabtextColor}, addon.ext_id);
+        app.setValue(`${addon.ext_id}_vs2019Tabs`, vs2019Tabs);
         setLessValues({'tabColor': tabColor}, addon.ext_id);
 	},
 
