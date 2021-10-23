@@ -2,7 +2,7 @@
     "title": "Code Monkey",
     "id": "CodeMonkey",
     "description": "A dark skin inspired by the color theme of Visual Studio.",
-    "version": "2.0.0",
+    "version": "3.0.0",
     "type": "skin",
     "author": "mmuffins",
     "config": "config.js",
