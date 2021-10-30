@@ -7,7 +7,7 @@
 //highlight2Color: #3f3682; //vs2022
 @warningColor: @highlightColor;
 @warning2Color: @highlight2Color;
-@controlColor: #252526;
+@controlColor: @secondaryColor;
 @hoverColor: @highlight2Color;
 @hoverBg2Color: #3e3e42;
 @hoverBgColor: #3e3e40;
@@ -15,21 +15,21 @@
 @borderColor: #3f3f46;
 @selectedColor: #264f78;
 @disabledSelectedColor: desaturate(mix(@baseColor, @selectedColor, 25%), 50%);
-@headerColor: #333337;
+@headerColor: @tertiaryColor;
 @highlightBgColor: @highlightColor;
 @darkBgColor: #1b1b1c;
 @invertedColor: #dcdcdc;
-@invertedSecondaryColor: white;
+@invertedSecondaryColor: #ffffff;
 @titleBarTextColor: #999999;
-@textColor: #dcdcdc;
+@textColor: @invertedColor;
 
 @tabColor: @headerColor;
 
-@buttonBgColor: #3f3f46;
+@buttonBgColor: @borderColor;
 @buttonBorderColor: #555555;
 @buttonDisabledTextColor: #656565;
 @buttonDisabledBgColor: #2D2D30;
-@buttonDisabledBorderColor: #3F3F46;
+@buttonDisabledBorderColor: @borderColor;
 
 @windowBorderSize: 1px;
 @windowBorderColor: @highlight2Color;
