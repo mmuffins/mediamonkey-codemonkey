@@ -3,6 +3,7 @@
     "id": "CodeMonkey",
     "description": "A dark skin inspired by the color theme of Visual Studio.",
     "version": "3.0.0",
+    "minAppVersion": "5.0.2",
     "type": "skin",
     "author": "mmuffins",
     "icon": "info.png",
