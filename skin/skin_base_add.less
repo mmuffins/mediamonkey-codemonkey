@@ -1,33 +1,38 @@
 @baseColor: #1e1e1e;
 @secondaryColor: #252526;
 @tertiaryColor: #333337;
-@warningColor: #1c97ea;
-@warning2Color: #007acc;
-@controlColor: #252526;
-@hoverColor: @warning2Color;
+@highlightColor: #1c97ea;
+@highlight2Color: #007acc;
+//@highlightColor: #7261e6; //vs2022
+//highlight2Color: #3f3682; //vs2022
+@warningColor: @highlightColor;
+@warning2Color: @highlight2Color;
+@controlColor: @secondaryColor;
+@hoverColor: @highlight2Color;
 @hoverBg2Color: #3e3e42;
 @hoverBgColor: #3e3e40;
 @contrastColor: #686868;
 @borderColor: #3f3f46;
 @selectedColor: #264f78;
 @disabledSelectedColor: desaturate(mix(@baseColor, @selectedColor, 25%), 50%);
-@headerColor: #333337;
-@highlightColor: @warningColor;
+@headerColor: @tertiaryColor;
 @highlightBgColor: @highlightColor;
 @darkBgColor: #1b1b1c;
 @invertedColor: #dcdcdc;
-@invertedSecondaryColor: white;
+@invertedSecondaryColor: #ffffff;
 @titleBarTextColor: #999999;
-@textColor: #dcdcdc;
+@textColor: @invertedColor;
 
-@buttonBgColor: #3f3f46;
+@tabColor: @headerColor;
+
+@buttonBgColor: @borderColor;
 @buttonBorderColor: #555555;
 @buttonDisabledTextColor: #656565;
 @buttonDisabledBgColor: #2D2D30;
-@buttonDisabledBorderColor: #3F3F46;
+@buttonDisabledBorderColor: @borderColor;
 
 @windowBorderSize: 1px;
-@windowBorderColor: @warning2Color;
+@windowBorderColor: @highlight2Color;
 
 @baseFontSize: 13px;
 @fontLineSize: @units1_1;
@@ -73,12 +78,12 @@ body {
 // }
 
 [data-control-class=MainTabs] .tabsHeader[data-selected] {
-    background-color: @warning2Color;
+    background-color: @tabColor;
     color: @invertedColor;
 	fill: @invertedColor;
     border-bottom: none;
+    border-top: 1px solid @highlight2Color;
     font-weight: bold;
-//    border-bottom: 1px solid@highlightColor;
 }
 
 .seekBar {
@@ -87,7 +92,7 @@ body {
 }
 
 .seekBarBefore {
-    background-color: @warning2Color;
+    background-color: @highlight2Color;
     border-radius: 0px;
 }
 

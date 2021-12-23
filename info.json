@@ -2,8 +2,63 @@
     "title": "Code Monkey",
     "id": "CodeMonkey",
     "description": "A dark skin inspired by the color theme of Visual Studio.",
-    "version": "1.0.0",
+    "version": "3.0.0",
+    "minAppVersion": "5.0.2",
     "type": "skin",
     "author": "mmuffins",
-    "icon": "info.png"
+    "icon": "info.png",
+    "skin_options": [
+        {
+            "type": "dropdown",
+            "title": "Display size",
+            "variable": "@baseFontSize",
+            "default": "13",
+            "options": {
+                "12": "Compact",
+                "13": "Normal",
+                "15": "Large",
+                "17": "Very large"
+            }
+        },
+        {
+            "type": "radio",
+            "default": "vs2022",
+            "title": "Active tab background",
+            "options": {
+                "vs2022": {
+                    "title": "Dark",
+                    "variables": {
+                        "tabColor": ""
+                    }
+                },
+                "vs2019": {
+                    "title": "Colorful",
+                    "variables": {
+                        "tabColor": "@highlight2Color"
+                    }
+                }
+            }
+        },
+        {
+            "type": "color",
+            "default": "#264f78",
+            "title": "Selection color",
+            "variable": "@selectedColor",
+            "visibilityCheck": "#dcdcdc"
+        },
+        {
+            "type": "color",
+            "default": "#1c97ea",
+            "title": "Highlight color",
+            "variable": "@highlightColor",
+            "visibilityCheck": "#dcdcdc"
+        },
+        {
+            "type": "color",
+            "default": "#007acc",
+            "title": "Secondary highlight color",
+            "variable": "@highlight2Color",
+            "visibilityCheck": "#dcdcdc"
+        }
+    ]
 }
