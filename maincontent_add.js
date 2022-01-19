@@ -12,8 +12,5 @@ progressContainerDiv.style.left = "11%";
 progressContainerDiv.style.right = 0;
 document.body.appendChild(progressContainerDiv);
 
-
-//var middlePanel = document.querySelector('[data-id="viewControl_MiddlePanel"]');
-// var middlePanel = qid('viewControl_MiddlePanel');
-var middlePanel = qid('mainview');
-middlePanel.body.appendChild(progressContainerDiv);
+//var mainview = qid('mainview');
+//mainview.body.appendChild(progressContainerDiv);
