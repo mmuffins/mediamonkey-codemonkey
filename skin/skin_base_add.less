@@ -38,18 +38,21 @@
 @baseFontSize: 13px;
 @fontLineSize: @units1_1;
 
-@font-face { font-family: Consolas; src: local('Consolas')}
-@font-face { font-family: Consolas; src: local('Consolas'); font-weight: bold; }
-@font-face { font-family: NotoSans; src: url("/skin/fonts/NotoSans-Regular.ttf"); }
-@font-face { font-family: NotoSans; src: url("/skin/fonts/NotoSans-Bold.ttf"); font-weight: bold; }
-
 // colors used for selection icons
 @selectedBgColor: @tertiaryColor;
 @selectedBgColorR: fade(@selectedBgColor, 85%); // for rows
 @selectedHoverColor: mix(@selectedBgColor, @hoverColor);
 
+@font-face { 
+    font-family: 'Inconsolata'; 
+    src: url("/skin/fonts/Inconsolata-VariableFont_wdth,wght.ttf") format("truetype")
+}
+
 body {
-    font-family: Consolas, sans-serif;
+    font-family: Inconsolata, sans-serif;
+    font-weight: 450;
+    letter-spacing: 0.6;
+    font-stretch: 103%
 }
 
 .sidePanel {
