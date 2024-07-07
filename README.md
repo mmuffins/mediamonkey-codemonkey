@@ -23,6 +23,10 @@ The skin can be customized by configuring user-defined highlight and selection c
 ### Font
 There is no built-in method to change the font used by the skin. This is a deliberate decision as it is designed to look a certain way, and the font has a major impact on that. It is, however, relatively easy to modify the skin to change the font used.
 
+```
+Please note that, while easily doable, changing the font used by Monkey Code is not generally recommended or supported.
+```
+
 - Install Code Monkey as ususal and exit mediamonkey
 - Navigate to the `CodeMonkey` folder in your mediamonkey settings directory, usually located in `%appdata%/MediaMonkey5/Skins`
 - Open `skin_base_add.less` located in the `skin` subfolder with a text editor
