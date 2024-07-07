@@ -35,24 +35,33 @@
 @windowBorderSize: 1px;
 @windowBorderColor: @highlight2Color;
 
-@baseFontSize: 13px;
-@fontLineSize: @units1_1;
-
 // colors used for selection icons
 @selectedBgColor: @tertiaryColor;
 @selectedBgColorR: fade(@selectedBgColor, 85%); // for rows
 @selectedHoverColor: mix(@selectedBgColor, @hoverColor);
 
 @font-face { 
-    font-family: 'Inconsolata'; 
-    src: url("/skin/fonts/Inconsolata-VariableFont_wdth,wght.ttf") format("truetype")
+    font-family: Consolas; 
+    src: local('Consolas');
 }
 
+@font-face { 
+    font-family: 'Inconsolata'; 
+    src: url("/skin/fonts/Inconsolata-VariableFont_wdth,wght.ttf") format("truetype");
+}
+
+@baseFontSize: 13px;
+@selectedFontFamily: Inconsolata;
+@fontWeight: 450;
+@fontSpacing: 0.6px;
+@fontStretch: 103%;
+@fontLineSize: @units1_1;
+
 body {
-    font-family: Inconsolata, sans-serif;
-    font-weight: 450;
-    letter-spacing: 0.6;
-    font-stretch: 103%
+    font-family: @selectedFontFamily, sans-serif;
+    font-weight: @fontWeight;
+    letter-spacing: @fontSpacing;
+    font-stretch: @fontStretch;
 }
 
 .sidePanel {
