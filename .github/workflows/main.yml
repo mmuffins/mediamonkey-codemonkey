@@ -42,7 +42,7 @@ jobs:
       run: cd '${{ github.workspace }}' && zip -r ${{ env.EXTENSION_FILE_NAME }}${{ env.VERSION }}.mmip .
     
     - name: Upload artifact
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: extension
         path: ${{ github.workspace }}/${{ env.EXTENSION_FILE_NAME }}${{ env.VERSION }}.mmip
