@@ -1,3 +1,4 @@
+@darkTheme: true;
 @baseColor: #1e1e1e;
 @secondaryColor: #252526;
 @tertiaryColor: #333337;
@@ -34,21 +35,33 @@
 @windowBorderSize: 1px;
 @windowBorderColor: @highlight2Color;
 
-@baseFontSize: 13px;
-@fontLineSize: @units1_1;
-
-@font-face { font-family: Consolas; src: local('Consolas')}
-@font-face { font-family: Consolas; src: local('Consolas'); font-weight: bold; }
-@font-face { font-family: NotoSans; src: url("/skin/fonts/NotoSans-Regular.ttf"); }
-@font-face { font-family: NotoSans; src: url("/skin/fonts/NotoSans-Bold.ttf"); font-weight: bold; }
-
 // colors used for selection icons
 @selectedBgColor: @tertiaryColor;
 @selectedBgColorR: fade(@selectedBgColor, 85%); // for rows
 @selectedHoverColor: mix(@selectedBgColor, @hoverColor);
 
+@font-face { 
+    font-family: Consolas; 
+    src: local('Consolas');
+}
+
+@font-face { 
+    font-family: 'Inconsolata'; 
+    src: url("/skin/fonts/Inconsolata-VariableFont_wdth,wght.ttf") format("truetype");
+}
+
+@baseFontSize: 13px;
+@selectedFontFamily: Inconsolata;
+@fontWeight: 450;
+@fontSpacing: 0.6px;
+@fontStretch: 103%;
+@fontLineSize: @units1_1;
+
 body {
-    font-family: Consolas, sans-serif;
+    font-family: @selectedFontFamily, sans-serif;
+    font-weight: @fontWeight;
+    letter-spacing: @fontSpacing;
+    font-stretch: @fontStretch;
 }
 
 .sidePanel {
